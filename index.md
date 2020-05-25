@@ -15,8 +15,6 @@ Syntax highlighted code block
 ## Header 2
 ### Header 3
 
-$a=b^2$
-
 - Bulleted
 - List
 
@@ -27,6 +25,8 @@ $a=b^2$
 
 [Link](url) and ![Image](src)
 ```
+
+$a=b^2$
 
 For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
 
