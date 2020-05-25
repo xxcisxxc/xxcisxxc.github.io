@@ -15,6 +15,8 @@ Syntax highlighted code block
 ## Header 2
 ### Header 3
 
+$a=b^2$
+
 - Bulleted
 - List
 
