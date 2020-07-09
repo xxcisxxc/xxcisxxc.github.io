@@ -1,0 +1,127 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <link rel="icon" href="../images/icon.png">
+    <link rel="stylesheet" href="../typora.css" type="text/css" />
+    <link rel="stylesheet" href="../main.css" type="text/css" />
+    <link rel="stylesheet" href="../font-awesome/css/font-awesome.min.css">
+    <link href='https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext'
+        rel='stylesheet' type='text/css' />
+    <!--- <title></title> --->
+    <title>并行计算机结构模型</title>
+</head>
+
+<body>
+    <div id="main-container">
+        <div id="header-container">
+            <div id="header">
+                <div id="header-icon-text-container">
+                    <div id="header-icon-container">
+                        <a href="../index.html"><img src="../images/icon.png" alt=""
+                                style="width: 100%; height: 100%; position: center; padding:0px; margin: 0px;"></a>
+                    </div>
+                    <div id="header-text-container">
+                        <a href="../index.html">Xincheng's Homepage</a>
+                    </div>
+                </div>
+                <div id="main">
+                    <button class="openbtn" onclick="openNav()">☰</button>
+                </div>
+            </div>
+        </div>
+        <div id="layout">
+            <div id="layout-menu-container">
+                <div id="layout-menu">
+                    <div class="menu-item"><a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+                    </div>
+                    <div class="menu-item"><a href="../index.html">About</a></div>
+                    <div class="menu-category">并行计算</div>
+                    <div class="menu-item"><a href="并行计算机结构模型.html" class="current">并行计算机结构模型</a></div>
+                    <div class="menu-item"><a href="并行程序设计.html">并行程序设计</a></div>
+                    <div class="menu-item"><a href="并行计算机性能测评.html">并行计算机性能测评</a></div>
+                </div> <!-- <div id="layout-menu"> -->
+            </div> <!-- <div id="layout-menu-container"> -->
+            <div id="layout-content-container">
+                <div id="layout-content">
+                    <div id='write' class='is-node'>
+                        <h1><a name="并行计算机结构模型" class="md-header-anchor"></a><span>并行计算机结构模型</span></h1>
+                        <div class='md-toc' mdtype='toc'>
+                            <p class="md-toc-content" role="list"><span role="listitem" class="md-toc-item md-toc-h1"
+                                    data-ref="n0"><a class="md-toc-inner" href="#并行计算机结构模型">并行计算机结构模型</a></span><span
+                                    role="listitem" class="md-toc-item md-toc-h2" data-ref="n4"><a class="md-toc-inner"
+                                        href="#共享地址类并行机结构">共享地址类并行机结构</a></span><span role="listitem"
+                                    class="md-toc-item md-toc-h3" data-ref="n6"><a class="md-toc-inner"
+                                        href="#对称多处理机smp">对称多处理机(SMP)</a></span><span role="listitem"
+                                    class="md-toc-item md-toc-h3" data-ref="n9"><a class="md-toc-inner"
+                                        href="#分布共享存储处理机dsm">分布共享存储处理机(DSM)</a></span><span role="listitem"
+                                    class="md-toc-item md-toc-h2" data-ref="n12"><a class="md-toc-inner"
+                                        href="#消息传递类并行机结构">消息传递类并行机结构</a></span><span role="listitem"
+                                    class="md-toc-item md-toc-h3" data-ref="n14"><a class="md-toc-inner"
+                                        href="#大规模并行处理机mpp">大规模并行处理机(MPP)</a></span><span role="listitem"
+                                    class="md-toc-item md-toc-h3" data-ref="n17"><a class="md-toc-inner"
+                                        href="#工作站机群cow">工作站机群(COW)</a></span><span role="listitem"
+                                    class="md-toc-item md-toc-h2" data-ref="n20"><a class="md-toc-inner"
+                                        href="#数据并行">数据并行</a></span></p>
+                        </div>
+                        <p><span>按照编程模型可以分为三类：共享地址、消息传递和数据并行。</span></p>
+                        <h2><a name="共享地址类并行机结构" class="md-header-anchor"></a><span>共享地址类并行机结构</span></h2>
+                        <p><span>根据访存模型又可分为两类：均匀存储访问(UMA)和非均匀存储访问(NUMA)。</span></p>
+                        <h3><a name="对称多处理机smp" class="md-header-anchor"></a><span>对称多处理机(SMP)</span></h3>
+                        <p><span>属于UMA，可以对称地访问共享存储器和I/O设备。具有单地址空间。UMA的物理存储器均被所有处理器均匀共享。所有处理器访问任何存储单元时间相同。</span></p>
+                        <p><img src="pics/1.bmp" alt="SMP" /></p>
+                        <h3><a name="分布共享存储处理机dsm" class="md-header-anchor"></a><span>分布共享存储处理机(DSM)</span></h3>
+                        <p><span>属于NUMA，与SMP的主要差别是访存模型，物理上分布在各个节点中的局部存储器形成了一个共享的存储器。处理器访问存储器时间不同，访问本地存储器较快，而访问外地的存储器较慢。</span>
+                        </p>
+                        <p><img src="pics/2.bmp" alt="DSM" /></p>
+                        <h2><a name="消息传递类并行机结构" class="md-header-anchor"></a><span>消息传递类并行机结构</span></h2>
+                        <p><span>消息传递类的结构的访存模型为非远程存储访问(NORMA)，NORMA的特点是所有存储器都是私有的且不支持远程存储器的访问</span></p>
+                        <h3><a name="大规模并行处理机mpp" class="md-header-anchor"></a><span>大规模并行处理机(MPP)</span></h3>
+                        <p><span>它与DSM的区别是MPP为多地址空间，而DSM为单地址空间，即访存模型的区别。</span></p>
+                        <p><img src="pics/3.bmp" referrerpolicy="no-referrer"
+                                alt="MPP"></p>
+                        <h3><a name="工作站机群cow" class="md-header-anchor"></a><span>工作站机群(COW)</span></h3>
+                        <p><span>COW和MPP的差别主要是各节点通过商品网络互连而非专用定制网络。并且每个节点都是完整的工作站。</span></p>
+                        <p><img src="pics/4.bmp" referrerpolicy="no-referrer"
+                                alt="COW"></p>
+                        <h2><a name="数据并行" class="md-header-anchor"></a><span>数据并行</span></h2>
+                        <p><span>常规串行计算机称为单指令单数据流(SISD)。单指令多数据流称为(SIMD)，还有多指令多数据流(MIMD)。</span></p>
+                    </div>
+                </div> <!-- <div id="layout-content"> -->
+                <div id="footer-container">
+                    <div id="footer">
+                        <div id="footer-text">
+                            Last edited on 2020-07-09 by Xincheng Xie.
+                        </div> <!-- <div id="footer-text"> -->
+                    </div> <!-- <div id="footer"> -->
+                </div> <!-- <div id="footer-container"> -->
+            </div> <!-- <div id="layout-content-container"> -->
+        </div>
+        <!--- <div id="layout"> --->
+    </div>
+    <!--- <div id="main-container"> --->
+    <script>
+        function openNav() {
+            if (window.innerWidth <= 1200) {
+                document.getElementById("layout-menu").style.width = "280px";
+                document.getElementById("layout-content-container").style.marginLeft = "280.8px";
+                document.getElementById("layout-content-container").style.position = "fixed";
+            }
+        }
+        function closeNav() {
+            if (window.innerWidth <= 1200) {
+                document.getElementById("layout-menu").style.width = "0";
+                document.getElementById("layout-content-container").style.position = "static";
+                document.getElementById("layout-content-container").style.marginLeft = "0px";
+                setInterval(
+                    function () { location.reload() },
+                    500
+                );
+            }
+        }
+    </script>
+</body>
+
+</html>
