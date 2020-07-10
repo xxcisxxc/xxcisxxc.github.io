@@ -303,7 +303,7 @@
                                         </g>
                                     </g>
                                 </svg></span>
-                            <script type="math/tex">nT_s</script><span>有值。，将值取出即可得</span><span class="MathJax_SVG" tabindex="-1"
+                            <script type="math/tex">nT_s</script><span>有值，将值取出即可得</span><span class="MathJax_SVG" tabindex="-1"
                                 style="font-size: 100%; display: inline-block;"><svg xmlns:xlink="http://www.w3.org/1999/xlink"
                                     width="14.942ex" height="2.577ex" viewBox="0 -806.1 6433.4 1109.7" role="img" focusable="false"
                                     style="vertical-align: -0.705ex;">
@@ -2497,7 +2497,7 @@
                                 </g>
                             </svg></span>
                         <script type="math/tex">N\log_2N</script><span>。</span></p>
-                    <p><img src="D:\Xincheng's Files\notes\digitalprocess\pics\fft.png" referrerpolicy="no-referrer" alt="fft"></p>
+                    <p><img src="pics\fft.png" referrerpolicy="no-referrer" alt="fft"></p>
                     <p><span>利用迭代计算傅里叶变换需要三个循环。以8点fft为例，分析如下：首先输入不按顺序输入，需要进行变址运算，之后进入三层循环；首先是有4组，每组1个碟式运算</span>&rarr;<span>第二次迭代有2组，每组2个</span>&rarr;<span>第三次有1组，每组4个，总共迭代了3次；用r来控制迭代次数，初始r为1，每次更新都乘以2，当r</span>&ge;<span>N/2时，停止迭代；用p来控制有多少组，组数为(N/2)/r；用q来控制有多少次碟式运算，次数为r；最后W的指数取(q-1)*((N/2)/r)。</span>
                     </p>
                     <pre spellcheck="false" class="md-fences md-end-block ty-contain-cm modeLoaded" lang="matlab"
