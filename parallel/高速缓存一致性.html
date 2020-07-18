@@ -1,0 +1,320 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <link rel="icon" href="../images/icon.png">
+    <link rel="stylesheet" href="../typora.css" type="text/css" />
+    <link rel="stylesheet" href="../main.css" type="text/css" />
+    <link rel="stylesheet" href="../font-awesome/css/font-awesome.min.css">
+    <link href='https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext'
+        rel='stylesheet' type='text/css' />
+    <!--- <title></title> --->
+    <title>高速缓存一致性</title>
+</head>
+
+<body>
+    <div id="main-container">
+        <div id="header-container">
+            <div id="header">
+                <div id="header-icon-text-container">
+                    <div id="header-icon-container">
+                        <a href="../index.html"><img src="../images/icon.png" alt=""
+                                style="width: 100%; height: 100%; position: center; padding:0px; margin: 0px;"></a>
+                    </div>
+                    <div id="header-text-container">
+                        <a href="../index.html">Xincheng's Homepage</a>
+                    </div>
+                </div>
+                <div id="main">
+                    <button class="openbtn" onclick="openNav()">☰</button>
+                </div>
+            </div>
+        </div>
+        <div id="layout">
+            <div id="layout-menu-container">
+                <div id="layout-menu">
+                    <div class="menu-item"><a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+                    </div>
+                    <div class="menu-item"><a href="../index.html">About</a></div>
+                    <div class="menu-category">并行计算</div>
+                    <div class="menu-item"><a href="并行计算机结构模型.html">并行计算机结构模型</a></div>
+                    <div class="menu-item"><a href="并行程序设计.html">并行程序设计</a></div>
+                    <div class="menu-item"><a href="并行计算机性能测评.html">并行计算机性能测评</a></div>
+                    <div class="menu-item"><a href="高速缓存一致性.html" class="current">高速缓存一致性</a></div>
+                    <div class="menu-item"><a href="互连网络.html">互连网络</a></div>
+                </div> <!-- <div id="layout-menu"> -->
+            </div> <!-- <div id="layout-menu-container"> -->
+            <div id="layout-content-container">
+                <div id="layout-content">
+                    <div id='write' class='is-node'>
+                        <h1><a name="高速缓存一致性" class="md-header-anchor"></a><span>高速缓存一致性</span></h1>
+                        <div class='md-toc' mdtype='toc'>
+                            <p class="md-toc-content" role="list"><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n0"><a
+                                        class="md-toc-inner" href="#高速缓存一致性">高速缓存一致性</a></span><span role="listitem"
+                                    class="md-toc-item md-toc-h2" data-ref="n3"><a class="md-toc-inner"
+                                        href="#高速缓存一致性原因">高速缓存一致性原因</a></span><span role="listitem" class="md-toc-item md-toc-h2"
+                                    data-ref="n11"><a class="md-toc-inner" href="#高速缓存一致性定义">高速缓存一致性定义</a></span><span role="listitem"
+                                    class="md-toc-item md-toc-h2" data-ref="n24"><a class="md-toc-inner"
+                                        href="#顺序一致性模型">顺序一致性模型</a></span><span role="listitem" class="md-toc-item md-toc-h2"
+                                    data-ref="n42"><a class="md-toc-inner" href="#总线侦听协议snooping">总线侦听协议(snooping)</a></span><span
+                                    role="listitem" class="md-toc-item md-toc-h3" data-ref="n44"><a class="md-toc-inner"
+                                        href="#二态写直达无效协议">二态写直达无效协议</a></span><span role="listitem" class="md-toc-item md-toc-h3"
+                                    data-ref="n48"><a class="md-toc-inner" href="#三态写回无效msi协议">三态写回无效(MSI)协议</a></span><span
+                                    role="listitem" class="md-toc-item md-toc-h3" data-ref="n53"><a class="md-toc-inner"
+                                        href="#四态写回无效mesi协议">四态写回无效(MESI)协议</a></span><span role="listitem"
+                                    class="md-toc-item md-toc-h3" data-ref="n57"><a class="md-toc-inner"
+                                        href="#四态写回更新dragon协议">四态写回更新(Dragon)协议</a></span><span role="listitem"
+                                    class="md-toc-item md-toc-h2" data-ref="n70"><a class="md-toc-inner"
+                                        href="#共享存储机的同步问题">共享存储机的同步问题</a></span><span role="listitem" class="md-toc-item md-toc-h2"
+                                    data-ref="n93"><a class="md-toc-inner" href="#总线侦听协议的实现">总线侦听协议的实现</a></span><span role="listitem"
+                                    class="md-toc-item md-toc-h3" data-ref="n94"><a class="md-toc-inner"
+                                        href="#正确性要求">正确性要求</a></span><span role="listitem" class="md-toc-item md-toc-h3"
+                                    data-ref="n102"><a class="md-toc-inner" href="#基本实现">基本实现</a></span><span role="listitem"
+                                    class="md-toc-item md-toc-h2" data-ref="n123"><a class="md-toc-inner"
+                                        href="#多层高速缓存">多层高速缓存</a></span><span role="listitem" class="md-toc-item md-toc-h2"
+                                    data-ref="n125"><a class="md-toc-inner" href="#分事务总线">分事务总线</a></span><span role="listitem"
+                                    class="md-toc-item md-toc-h2" data-ref="n128"><a class="md-toc-inner"
+                                        href="#基于目录的高速缓存一致性">基于目录的高速缓存一致性</a></span><span role="listitem" class="md-toc-item md-toc-h2"
+                                    data-ref="n160"><a class="md-toc-inner" href="#弱存储一致性模型">弱存储一致性模型</a></span></p>
+                        </div>
+                        <h2><a name="高速缓存一致性原因" class="md-header-anchor"></a><span>高速缓存一致性原因</span></h2>
+                        <ol start=''>
+                            <li><span>由共享可写数据所造成的不一致性；</span></li>
+                            <li><span>由绕过高速缓存的I/O所造成的不一致；</span></li>
+                            <li><span>进程迁移所造成的不一致。</span></li>
+                        </ol>
+                        <h2><a name="高速缓存一致性定义" class="md-header-anchor"></a><span>高速缓存一致性定义</span></h2>
+                        <p><span>存储系统是高速缓存一致的，满足下列条件：根据一个程序的任何一次的执行结果，都能够对每个内存位置构造出一个全局的串行序，按照该串行序，执行的结果与实际的执行结果一样，并且在此序列中：</span></p>
+                        <ol start=''>
+                            <li><span>任何特定进程发出的操作所表现出来的假想串行序，和该进程向存储系统发出它们的序相同；</span></li>
+                            <li><span>每个读操作所返回的值，是在假想串行序中“最近”的向那个位置的写操作所写的值。</span></li>
+                        </ol>
+                        <p><span>上述定义中隐含了以下两点：</span></p>
+                        <ol start=''>
+                            <li><span>写传播：一个处理器对一个位置所写入的值，最终对其他处理器是可见的；</span></li>
+                            <li><span>写串行化：对同一位置的所有写操作(来自同一个或不同处理器)应该能串行化，也就是说，所有的处理器以相同的次序看到所有这些写操作。</span></li>
+                        </ol>
+                        <h2><a name="顺序一致性模型" class="md-header-anchor"></a><span>顺序一致性模型</span></h2>
+                        <p><span>高速缓存一致性主要关注不同处理器上对同一内存位置的读/写操作的次序，但是没有保证不同位置的操作次序的一致性。顺序一致性模型(SC)的定义如下：</span></p>
+                        <blockquote>
+                            <p><span>一个多处理机系统是顺序一致的(Sequential
+                                    Consistency)，如果任意一次执行的结果，都与所有处理器按某一顺序的次序执行结果相同，并且在次顺序的次序中，各处理器的操作都按其程序所指定的次序出现。</span></p>
+                        </blockquote>
+                        <p><span>为了实现顺序一致性，要遵循两个限制：</span></p>
+                        <ol start=''>
+                            <li><span>程序序的限制，也就是同一个进程发出的内存操作必须严格按照程序中的顺序对所有处理器可见；</span></li>
+                            <li><span>内存操作原子化的限制，也就是所有进程都必须等到前一个内存操作相对于所有的处理器都执行完毕后，才能发出下一个内存操作。</span></li>
+                        </ol>
+                        <p><span>一般地，满足以下充分条件就可以保证顺序一致性：</span></p>
+                        <ol start=''>
+                            <li><span>每个进程按照程序序来发出内存操作；</span></li>
+                            <li><span>进程发出一个写操作后，该进程必须等待该写操作相对于所有处理器都完成后，才能发出下一个内存操作；</span></li>
+                            <li><span>进程发出一个读操作后，该进程必须等待该读操作完成，并且等待提供该读操作值的写操作相对于所有处理器完成后，才能发出下一个内存操作。</span></li>
+                        </ol>
+                        <h2><a name="总线侦听协议snooping" class="md-header-anchor"></a><span>总线侦听协议(snooping)</span></h2>
+                        <p><span>共享存储机器，如SMP常采用基于总线侦听的一致性协议。</span></p>
+                        <h3><a name="二态写直达无效协议" class="md-header-anchor"></a><span>二态写直达无效协议</span></h3>
+                        <p><img src="pics\6.png" alt="finite-state-1" style="zoom: 67%;" /></p>
+                        <p><span>写直达策略中，所有写操作都出现在总线上，但由于同时只能有一个总线事务出现在总线上，因此在任意执行中所有对同一位置的写操作都按照它们出现在总线上的次序——总线序被全局串行化；读缺失与写操作一起被总线序全局串行化；读命中获得的值是同一处理器最新修改的值，或者同一处理器中最近一次读缺失获得的值，因此也按照全局总线序来获得值。因此，符合高速缓存一次性要求。</span>
+                        </p>
+                        <p><span>事实上，不仅同一位置的读/写被总线序串行化，对所有位置的读/写都被总线序串行化了。</span></p>
+                        <h3><a name="三态写回无效msi协议" class="md-header-anchor"></a><span>三态写回无效(MSI)协议</span></h3>
+                        <p><img src="pics\7.png" alt="infi-state-2" style="zoom: 50%;" /></p>
+                        <p><span>有无效(I)、共享(S)和修改(M)状态。无效指该高速缓存中是无效的或还没进入；共享指该高速缓存是未被修改过的，包括主存；修改指只有该高速缓存有该块的最新拷贝。</span></p>
+                        <p><span>高速缓存被替换时，若被替换出去的块处于M状态，则将其内容写回主存。</span></p>
+                        <p><span>总线操作有总线读、总线互斥读、总线写回、刷新(Flush)。总线互斥读是为了获取准备修改的互斥拷贝，所有其他高速缓存应被置为无效。刷新是为了从高速缓存取值到总线，而不是从内存取值到总线。</span>
+                        </p>
+                        <h3><a name="四态写回无效mesi协议" class="md-header-anchor"></a><span>四态写回无效(MESI)协议</span></h3>
+                        <p><img src="pics\8.png" alt="finite-state-3" style="zoom: 67%;" /></p>
+                        <p><span>与MSI协议相比，增加互斥(E)状态，原因是，若采用MSI协议，当一个顺序程序先读入一个数据项(BusRd)，然后修改一个数据项(BusRdX)时，数据项不存在共享者，即不需要先转换成S再变成M，BusRdX总线事务是不需要的。E状态表示只有一个高速缓存有这个内存块，且该块内容没有被修改过。这样只要发出BusRd就能得到内存块并置为E，就可以直接修改。</span>
+                        </p>
+                        <p><span>在产生BusRd事务并装入内存块时，高速缓存控制器需要知道别的高速缓存中是否存在该块的拷贝。因此需要总线提供一个额外的共享(S)信号线。</span></p>
+                        <h3><a name="四态写回更新dragon协议" class="md-header-anchor"></a><span>四态写回更新(Dragon)协议</span></h3>
+                        <p><img src="pics\9.png" referrerpolicy="no-referrer" alt="finite-state-4">
+                        </p>
+                        <p><span>有四种状态：</span></p>
+                        <ul>
+                            <li><span>互斥且干净(E)：表示只有本高速缓存有该块有效的拷贝，且没有被修改过，主存中也是最新的；</span></li>
+                            <li><span>共享且干净(SC)：可能有两个或更多高速缓存拥有该块，主存未必是最新的；</span></li>
+                            <li><span>共享且修改过(SM)：可能有两个或更多高速缓存拥有该块，主存不是最新的。当缓存块被替换时，修改主存。有可能一个块只在其中一个缓存处在SM，而其他处在SC；</span></li>
+                            <li><span>修改过(M)：表示仅在该高速缓存被修改过，主存已过时。</span></li>
+                        </ul>
+                        <p><span>总线事务有：总线读，总线写回，总线更新。处理器增加处理器读缺失和处理器写缺失。总线更新事务将处理器所写的内容在总线上进行广播。</span></p>
+                        <h2><a name="共享存储机的同步问题" class="md-header-anchor"></a><span>共享存储机的同步问题</span></h2>
+                        <p><span>一个同步事件主要有三个组成部分：获得方法(获得同步的权利)、等待算法(等待变得可用)、释放方法(使得另外进程能够获得同步)。等待算法的选择独立于同步的类型，主要有忙等待和阻塞两种。</span></p>
+                        <p><span>SMP机器主要支持三种同步操作：互斥、点到点事件、全局事件。</span></p>
+                        <ol start=''>
+                            <li>
+                                <p><span>互斥</span></p>
+                                <p><span>a. Test&amp;Set指令</span></p>
+                                <p><span> </span><span>优点：简单、功能正确。</span></p>
+                                <p><span> </span><span>缺点：性能有问题。</span></p>
+                                <p><span>设计锁性能目标：低延迟(获得锁时延迟尽可能低)、低通信量(锁之间接替通信量低)、可扩放性(延迟和通信量不随处理器数目变大而迅速增大)、地存储代价(一个锁需要的信息应该是很少的)、公正性(不会出现饿死现象)。</span>
+                                </p>
+                                <p><span>b. 改进的Test&amp;Set指令</span></p>
+                                <p><span> </span><span>后退Test&amp;Set锁、Test-and-Test&amp;Set锁</span></p>
+                                <p><span>c. 先进的锁算法</span></p>
+                                <p><span> </span><span>Ticket Lock、Array-based Lock</span></p>
+                            </li>
+                            <li>
+                                <p><span>点到点事件同步</span></p>
+                                <p><span>并行程序内点到点同步事件通常作为标志的忙等待来实现。若用阻塞来替代忙等待，直接使用信号量就可以。</span></p>
+                            </li>
+                            <li>
+                                <p><span>全局事件同步(路障同步)</span></p>
+                                <p><span>a. 集中式路障</span></p>
+                                <p><span> </span><span>利用共享计数器记录已经到达路障的数目</span></p>
+                                <p><span>b. 具有感觉反转的集中式路障</span></p>
+                                <p><span>
+                                    </span><span>因为可能一个进程在路障位置忙等待过程中被交换出去，导致再次进入时，其他进程已经进入了第二个路障阶段。因此需要防止一个进程在所有进程都离开先去的路障操作之前，再次进入这个路障。一个方法就是不同路障事件的等待标记利用不同的标记值，例如利用(0,
+                                        1)反转。</span></p>
+                            </li>
+                        </ol>
+                        <h2><a name="总线侦听协议的实现" class="md-header-anchor"></a><span>总线侦听协议的实现</span></h2>
+                        <h3><a name="正确性要求" class="md-header-anchor"></a><span>正确性要求</span></h3>
+                        <ol start=''>
+                            <li><span>满足高速缓存一致性要求和维护存储一致性模型所陈述的语义</span></li>
+                            <li><span>不会造成死锁、活锁和饥饿</span></li>
+                            <li><span>处理一些发生错误的情况</span></li>
+                        </ol>
+                        <h3><a name="基本实现" class="md-header-anchor"></a><span>基本实现</span></h3>
+                        <ol start=''>
+                            <li>
+                                <p><span>高速缓存控制器及其标记的设计</span></p>
+                                <p><span>相比于单处理机的高速缓存，多处理机需要同时侦听处理器和总线，因此，可以简单地把高速缓存看做有两个控制器，一个侦听总线，一个侦听处理器；由于高速缓存只有一个标记数组，因此可以采用双端口的RAM来存储标记和状态或者复制每一块的标记和状态；控制器不仅是总线事务的发起者，也是响应者。</span>
+                                </p>
+                            </li>
+                            <li>
+                                <p><span>报告侦听结果</span></p>
+                                <p><span>a) 何时报告</span></p>
+                                <p><span>
+                                    </span><span>设计应该保证在地址发射到总线后的一个固定数目的时钟周期内，侦听结果可以在总线上获得；设计应该能提供一种可变延迟侦听机制作为选择；设计应该使内存子系统为每个块保持一位以显示该块是否在某个高速缓存被修改了。</span>
+                                </p>
+                                <p><span>b) 如何报告</span></p>
+                                <p><span>
+                                    </span><span>对于MESI，可用三条执行的线或的信号线来报告，其中两条报告侦听结果(Shared/Dirty)，另一条报告侦听结果是否有效(Inhibit)。若发现某块缓存有请求的数据，shared置位；若发现数据被修改，dirty置位；inhibit一直置位到所有高速缓存都完成监听。</span>
+                                </p>
+                            </li>
+                            <li>
+                                <p><span>处理写回</span></p>
+                                <p><span>机器能提供额外的存储作为缓冲区，被替换出来的块可以暂时存在缓冲区中，到第二个事务获得总线完成写回；在写回完成之前，可能会有总线事务包含正在写回缓冲区中的内存卡地址，此时必须从写回缓冲区提供数据，并取消被挂起的写回请求。</span>
+                                </p>
+                            </li>
+                            <li>
+                                <p><span>基本组织</span></p>
+                            </li>
+                            <li>
+                                <p><span>非原子状态转换</span></p>
+                                <p><span>用中间状态来扩展协议的状态转换图，等等。</span></p>
+                            </li>
+                            <li>
+                                <p><span>死锁问题/活锁和饥饿问题</span></p>
+                            </li>
+                        </ol>
+                        <h2><a name="多层高速缓存" class="md-header-anchor"></a><span>多层高速缓存</span></h2>
+                        <p><span>多级缓存需要满足包含性，即如果一个内存块存在于一级缓存中，二级缓存必定有该内存块；如果一个内存在一级缓存中处于修改过状态，二级缓存必定处理修改过状态。</span></p>
+                        <h2><a name="分事务总线" class="md-header-anchor"></a><span>分事务总线</span></h2>
+                        <p><span>在原子总线上，一次只能出现一个总线事务，极大限制了所能获得的总线带宽。因此可以采用分事务总线，一个事务被分成独立的请求子事务和响应子事务，同一事务的两个子事务之间，允许插入其他的事务。</span></p>
+                        <p><span>分事务总线主要问题：1. 冲突请求(一个请求还未完成，新的请求就出现在总线上)；2. 流量控制(控制器间的数据响应的缓冲区容易溢出)；3.
+                                请求响应(由于从总线来的请求被缓存，需要重新考虑何时且以何种方式将侦听结果和数据响应放到总线上)。</span></p>
+                        <h2><a name="基于目录的高速缓存一致性" class="md-header-anchor"></a><span>基于目录的高速缓存一致性</span></h2>
+                        <p><span>不同类型的目录协议可分为：全映射目录、有限目录和链式目录。</span></p>
+                        <p><span>全映射目录存放与全局存储器中每个块有关的数据，这样系统中每个高速缓存可以同时存储任何数据块的拷贝（每个目录项包含N个指针，N是系统中处理器的数目）；有限目录与全局映射目录的不同之处是每个目录项含有固定数目的指针（指针替换过程称为驱逐）；链式目录将目录分布到各个高速缓存（单链法和双链法）。</span>
+                        </p>
+                        <p><img src="pics\10.png" referrerpolicy="no-referrer" alt="directory"></p>
+                        <p><span>在高速缓存中，每一行都有无效、共享和独占三种状态。</span></p>
+                        <p><span>在存储器中，每一行都有一相应的目录项，每一目录项都有一N位的位向量，其中N是系统中处理器个数。若位向量中第i位为1，则表示此存储行在第i个处理器Pi中有备份。此外，每一目录有一改写位，当改写位为1时，表示处理器独占并已改写此行，相应的存储行处于脏状态；否则处于干净状态。</span>
+                        </p>
+                        <p><strong><span>I 取数操作</span></strong></p>
+                        <ol start=''>
+                            <li>
+                                <p><span>若x在Pi的高速缓存中处于共享或独占状态，则取数操作在高速缓存命中；</span></p>
+                            </li>
+                            <li>
+                                <p><span>若x在Pi的高速缓存中处于无效状态，那么这个处理器向存储器发出读请求：</span></p>
+                                <p><span>a. 如果目录项内容显示x所在存储行处于干净状态，则提供数据并改变位向量第i位的值位1；</span></p>
+                                <p><span>b. 如果目录项内容显示已被改写，则向相应处理器发出写回请求，相应处理器将独占状态改为共享状态，并向处理器发回回写应答，最后改写目录项的位向量和改写位；</span></p>
+                            </li>
+                            <li>
+                                <p><span>若x不在高速缓存中，则向处理器发出读请求。</span></p>
+                            </li>
+                        </ol>
+                        <p><strong><span>II 存数操作</span></strong></p>
+                        <ol start=''>
+                            <li>
+                                <p><span>若x在Pi中处于独占状态，则命中；</span></p>
+                            </li>
+                            <li>
+                                <p><span>若处于共享状态，首先向存储器发出写请求：</span></p>
+                                <p><span>a. 如果目录项显示为干净状态，并没有被其他处理器所共享(所有其他位均为0)，则允许Pi独占x所在行，并把目录项的改写位置置为1，并将位向量的相应位置1；</span></p>
+                                <p><span>b. 如果目录项为干净状态，且被其他处理器所共享，那么先向其他持有该项的高速缓存发送无效化命令，再将位向量清零，并将改写位置置1和位向量相应位置1；</span></p>
+                            </li>
+                            <li>
+                                <p><span>若处于无效状态，则向存储器发出写请求：</span></p>
+                                <p><span>a. b.</span></p>
+                                <p><span>c. 如果目录项为改写状态，则向相应处理器发送无效写回请求，相应处理器从独占状态改为无效状态，并向处理器发出无效写回应答，最后改写目录项的位向量和改写位；</span></p>
+                            </li>
+                            <li>
+                                <p><span>如果不在高速缓存中，则像存储器发出写请求。</span></p>
+                            </li>
+                        </ol>
+                        <p><strong><span>III 替换操作</span></strong></p>
+                        <p><span>若某处理器要替换一高速缓存行且被替换行处于独占状态，则这个处理器向存储器发出一个替换请求。</span></p>
+                        <h2><a name="弱存储一致性模型" class="md-header-anchor"></a><span>弱存储一致性模型</span></h2>
+                        <p><span>存储一致性的要求过于严格，为了提升性能，需要允许部分指令重叠执行。</span></p>
+                        <ol start=''>
+                            <li>
+                                <p><span>处理器一致性模型</span></p>
+                                <p><span>给访存施加如下限制：在任一取数操作允许被执行之前，同一处理器所有取数操作都已完成；在任一存数操作允许执行之前，所有同一处理器的访存操作(包括取数和存数)都已完成。上述条件允许STORE之后的LOAD绕过STORE执行。</span>
+                                </p>
+                            </li>
+                            <li>
+                                <p><span>弱一致性模型</span></p>
+                                <p><span>主要思想是让程序员负担一些维护数据一致性的责任。给访存事件做如下限制：同步操作执行满足顺序一致性；任一普通访存操作允许被执行之前，所有同一处理器先于这一访存操作的同步操作已完成；任一同步操作允许被执行之前，所有在同一处理器中先于这一同步操作的普通访存操作都已完成。上述条件允许在同步操作之间的普通访存操作以任意次序执行。</span>
+                                </p>
+                            </li>
+                            <li>
+                                <p><span>释放一致性模型</span></p>
+                                <p><span>把同步操作进一步分为获取操作和释放操作。限制如下：在任一普通访存操作被执行之前，所有在同一处理器先于这一访存操作的acquire都已完成；在任一释放操作被允许执行之前，所有在同一处理器中先于这一release的不同访存操作都已完成；同步操作执行满足顺序一致性条件。</span>
+                                </p>
+                            </li>
+                        </ol>
+                    </div>
+                </div> <!-- <div id="layout-content"> -->
+                <div id="footer-container">
+                    <div id="footer">
+                        <div id="footer-text">
+                            Last edited on 2020-07-18 by Xincheng Xie.
+                        </div> <!-- <div id="footer-text"> -->
+                    </div> <!-- <div id="footer"> -->
+                </div> <!-- <div id="footer-container"> -->
+            </div> <!-- <div id="layout-content-container"> -->
+        </div>
+        <!--- <div id="layout"> --->
+    </div>
+    <!--- <div id="main-container"> --->
+    <script>
+        function openNav() {
+            if (window.innerWidth <= 1200) {
+                document.getElementById("layout-menu").style.width = "280px";
+                document.getElementById("layout-content-container").style.marginLeft = "280.8px";
+                document.getElementById("layout-content-container").style.position = "fixed";
+            }
+        }
+        function closeNav() {
+            if (window.innerWidth <= 1200) {
+                document.getElementById("layout-menu").style.width = "0";
+                document.getElementById("layout-content-container").style.position = "static";
+                document.getElementById("layout-content-container").style.marginLeft = "0px";
+                setInterval(
+                    function () { location.reload() },
+                    500
+                );
+            }
+        }
+    </script>
+</body>
+
+</html>

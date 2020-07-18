@@ -1,0 +1,795 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <link rel="icon" href="../images/icon.png">
+    <link rel="stylesheet" href="../typora.css" type="text/css" />
+    <link rel="stylesheet" href="../main.css" type="text/css" />
+    <link rel="stylesheet" href="../font-awesome/css/font-awesome.min.css">
+    <link href='https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext'
+        rel='stylesheet' type='text/css' />
+    <!--- <title></title> --->
+    <title>互连网络</title>
+</head>
+
+<body>
+    <div id="main-container">
+        <div id="header-container">
+            <div id="header">
+                <div id="header-icon-text-container">
+                    <div id="header-icon-container">
+                        <a href="../index.html"><img src="../images/icon.png" alt=""
+                                style="width: 100%; height: 100%; position: center; padding:0px; margin: 0px;"></a>
+                    </div>
+                    <div id="header-text-container">
+                        <a href="../index.html">Xincheng's Homepage</a>
+                    </div>
+                </div>
+                <div id="main">
+                    <button class="openbtn" onclick="openNav()">☰</button>
+                </div>
+            </div>
+        </div>
+        <div id="layout">
+            <div id="layout-menu-container">
+                <div id="layout-menu">
+                    <div class="menu-item"><a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+                    </div>
+                    <div class="menu-item"><a href="../index.html">About</a></div>
+                    <div class="menu-category">并行计算</div>
+                    <div class="menu-item"><a href="并行计算机结构模型.html">并行计算机结构模型</a></div>
+                    <div class="menu-item"><a href="并行程序设计.html">并行程序设计</a></div>
+                    <div class="menu-item"><a href="并行计算机性能测评.html">并行计算机性能测评</a></div>
+                    <div class="menu-item"><a href="高速缓存一致性.html">高速缓存一致性</a></div>
+                    <div class="menu-item"><a href="互连网络.html" class="current">互连网络</a></div>
+                </div> <!-- <div id="layout-menu"> -->
+            </div> <!-- <div id="layout-menu-container"> -->
+            <div id="layout-content-container">
+                <div id="layout-content">
+                    <div id='write' class='is-node'>
+                        <h1><a name="互连网络" class="md-header-anchor"></a><span>互连网络</span></h1>
+                        <div class='md-toc' mdtype='toc'>
+                            <p class="md-toc-content" role="list"><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n0"><a
+                                        class="md-toc-inner" href="#互连网络">互连网络</a></span><span role="listitem"
+                                    class="md-toc-item md-toc-h2" data-ref="n3"><a class="md-toc-inner"
+                                        href="#基本通信性能">基本通信性能</a></span><span role="listitem" class="md-toc-item md-toc-h3"
+                                    data-ref="n4"><a class="md-toc-inner" href="#时延">时延</a></span><span role="listitem"
+                                    class="md-toc-item md-toc-h3" data-ref="n9"><a class="md-toc-inner" href="#带宽">带宽</a></span><span
+                                    role="listitem" class="md-toc-item md-toc-h2" data-ref="n15"><a class="md-toc-inner"
+                                        href="#静态互连网络">静态互连网络</a></span><span role="listitem" class="md-toc-item md-toc-h3"
+                                    data-ref="n16"><a class="md-toc-inner" href="#一维线性阵列">一维线性阵列</a></span><span role="listitem"
+                                    class="md-toc-item md-toc-h3" data-ref="n19"><a class="md-toc-inner"
+                                        href="#多维网格和多维环">多维网格和多维环</a></span><span role="listitem" class="md-toc-item md-toc-h3"
+                                    data-ref="n22"><a class="md-toc-inner" href="#树">树</a></span><span role="listitem"
+                                    class="md-toc-item md-toc-h3" data-ref="n25"><a class="md-toc-inner" href="#超立方">超立方</a></span><span
+                                    role="listitem" class="md-toc-item md-toc-h3" data-ref="n27"><a class="md-toc-inner"
+                                        href="#小结">小结</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n29"><a
+                                        class="md-toc-inner" href="#动态互连网络">动态互连网络</a></span><span role="listitem"
+                                    class="md-toc-item md-toc-h3" data-ref="n30"><a class="md-toc-inner" href="#总线">总线</a></span><span
+                                    role="listitem" class="md-toc-item md-toc-h3" data-ref="n32"><a class="md-toc-inner"
+                                        href="#交叉开关">交叉开关</a></span><span role="listitem" class="md-toc-item md-toc-h3"
+                                    data-ref="n34"><a class="md-toc-inner" href="#多级互连网络min">多级互连网络(MIN)</a></span><span role="listitem"
+                                    class="md-toc-item md-toc-h3" data-ref="n37"><a class="md-toc-inner"
+                                        href="#小结-n37">小结</a></span><span role="listitem" class="md-toc-item md-toc-h2"
+                                    data-ref="n39"><a class="md-toc-inner" href="#选路方法和开关技术">选路方法和开关技术</a></span><span role="listitem"
+                                    class="md-toc-item md-toc-h3" data-ref="n40"><a class="md-toc-inner"
+                                        href="#x-y选路法">X-Y选路法</a></span><span role="listitem" class="md-toc-item md-toc-h3"
+                                    data-ref="n43"><a class="md-toc-inner" href="#e-立方选路法">E-立方选路法</a></span><span role="listitem"
+                                    class="md-toc-item md-toc-h3" data-ref="n46"><a class="md-toc-inner"
+                                        href="#存储转发sf选路和切通ct选路">存储转发(SF)选路和切通(CT)选路</a></span><span role="listitem"
+                                    class="md-toc-item md-toc-h2" data-ref="n49"><a class="md-toc-inner"
+                                        href="#死锁避免">死锁避免</a></span><span role="listitem" class="md-toc-item md-toc-h3"
+                                    data-ref="n50"><a class="md-toc-inner" href="#死锁产生">死锁产生</a></span><span role="listitem"
+                                    class="md-toc-item md-toc-h3" data-ref="n54"><a class="md-toc-inner" href="#避免死锁">避免死锁</a></span>
+                            </p>
+                        </div>
+                        <h2><a name="基本通信性能" class="md-header-anchor"></a><span>基本通信性能</span></h2>
+                        <h3><a name="时延" class="md-header-anchor"></a><span>时延</span></h3>
+                        <div contenteditable="false" spellcheck="false" class="mathjax-block md-end-block md-math-block md-rawblock"
+                            id="mathjax-n5" cid="n5" mdtype="math_block">
+                            <div class="md-rawblock-container md-math-container" tabindex="-1">
+                                <div class="MathJax_SVG_Display" style="text-align: center;"><span class="MathJax_SVG"
+                                        id="MathJax-Element-92-Frame" tabindex="-1" style="font-size: 100%; display: inline-block;"><svg
+                                            xmlns:xlink="http://www.w3.org/1999/xlink" width="47.101ex" height="2.227ex"
+                                            viewBox="0 -755.9 20279.7 958.9" role="img" focusable="false"
+                                            style="vertical-align: -0.472ex; max-width: 100%;">
+                                            <defs>
+                                                <path stroke-width="0" id="E95-MJMAIN-3D"
+                                                    d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z">
+                                                </path>
+                                                <path stroke-width="0" id="E95-MJMAIN-2B"
+                                                    d="M56 237T56 250T70 270H369V420L370 570Q380 583 389 583Q402 583 409 568V270H707Q722 262 722 250T707 230H409V-68Q401 -82 391 -82H389H387Q375 -82 369 -68V230H70Q56 237 56 250Z">
+                                                </path>
+                                            </defs>
+                                            <g stroke="currentColor" fill="currentColor" stroke-width="0"
+                                                transform="matrix(1 0 0 -1 0 0)"><text font-family="STIXGeneral, 'PingFang SC', serif"
+                                                    stroke="none" transform="scale(50.259) matrix(1 0 0 -1 0 0)">时</text>
+                                                <g transform="translate(804,0)"><text font-family="STIXGeneral, 'PingFang SC', serif"
+                                                        stroke="none" transform="scale(50.259) matrix(1 0 0 -1 0 0)">间</text></g>
+                                                <use xlink:href="#E95-MJMAIN-3D" x="1886" y="0"></use>
+                                                <g transform="translate(2941,0)"><text font-family="STIXGeneral, 'PingFang SC', serif"
+                                                        stroke="none" transform="scale(50.259) matrix(1 0 0 -1 0 0)">额</text></g>
+                                                <g transform="translate(3745,0)"><text font-family="STIXGeneral, 'PingFang SC', serif"
+                                                        stroke="none" transform="scale(50.259) matrix(1 0 0 -1 0 0)">外</text></g>
+                                                <g transform="translate(4550,0)"><text font-family="STIXGeneral, 'PingFang SC', serif"
+                                                        stroke="none" transform="scale(50.259) matrix(1 0 0 -1 0 0)">开</text></g>
+                                                <g transform="translate(5354,0)"><text font-family="STIXGeneral, 'PingFang SC', serif"
+                                                        stroke="none" transform="scale(50.259) matrix(1 0 0 -1 0 0)">销</text></g>
+                                                <use xlink:href="#E95-MJMAIN-2B" x="6380" y="0"></use>
+                                                <g transform="translate(7380,0)"><text font-family="STIXGeneral, 'PingFang SC', serif"
+                                                        stroke="none" transform="scale(50.259) matrix(1 0 0 -1 0 0)">路</text></g>
+                                                <g transform="translate(8185,0)"><text font-family="STIXGeneral, 'PingFang SC', serif"
+                                                        stroke="none" transform="scale(50.259) matrix(1 0 0 -1 0 0)">由</text></g>
+                                                <g transform="translate(8989,0)"><text font-family="STIXGeneral, 'PingFang SC', serif"
+                                                        stroke="none" transform="scale(50.259) matrix(1 0 0 -1 0 0)">延</text></g>
+                                                <g transform="translate(9793,0)"><text font-family="STIXGeneral, 'PingFang SC', serif"
+                                                        stroke="none" transform="scale(50.259) matrix(1 0 0 -1 0 0)">迟</text></g>
+                                                <use xlink:href="#E95-MJMAIN-2B" x="10819" y="0"></use>
+                                                <g transform="translate(11819,0)"><text font-family="STIXGeneral, 'PingFang SC', serif"
+                                                        stroke="none" transform="scale(50.259) matrix(1 0 0 -1 0 0)">通</text></g>
+                                                <g transform="translate(12624,0)"><text font-family="STIXGeneral, 'PingFang SC', serif"
+                                                        stroke="none" transform="scale(50.259) matrix(1 0 0 -1 0 0)">信</text></g>
+                                                <g transform="translate(13428,0)"><text font-family="STIXGeneral, 'PingFang SC', serif"
+                                                        stroke="none" transform="scale(50.259) matrix(1 0 0 -1 0 0)">占</text></g>
+                                                <g transform="translate(14232,0)"><text font-family="STIXGeneral, 'PingFang SC', serif"
+                                                        stroke="none" transform="scale(50.259) matrix(1 0 0 -1 0 0)">用</text></g>
+                                                <g transform="translate(15036,0)"><text font-family="STIXGeneral, 'PingFang SC', serif"
+                                                        stroke="none" transform="scale(50.259) matrix(1 0 0 -1 0 0)">度</text></g>
+                                                <use xlink:href="#E95-MJMAIN-2B" x="16062" y="0"></use>
+                                                <g transform="translate(17063,0)"><text font-family="STIXGeneral, 'PingFang SC', serif"
+                                                        stroke="none" transform="scale(50.259) matrix(1 0 0 -1 0 0)">竞</text></g>
+                                                <g transform="translate(17867,0)"><text font-family="STIXGeneral, 'PingFang SC', serif"
+                                                        stroke="none" transform="scale(50.259) matrix(1 0 0 -1 0 0)">争</text></g>
+                                                <g transform="translate(18671,0)"><text font-family="STIXGeneral, 'PingFang SC', serif"
+                                                        stroke="none" transform="scale(50.259) matrix(1 0 0 -1 0 0)">延</text></g>
+                                                <g transform="translate(19475,0)"><text font-family="STIXGeneral, 'PingFang SC', serif"
+                                                        stroke="none" transform="scale(50.259) matrix(1 0 0 -1 0 0)">迟</text></g>
+                                            </g>
+                                        </svg></span></div>
+                                <script type="math/tex; mode=display" id="MathJax-Element-92">时间=额外开销+路由延迟+通信占用度+竞争延迟</script>
+                            </div>
+                        </div>
+                        <p><span>额外开销与实际传输的端点如何将消息引入和引出网络有关。路有延迟和通道占用度概括为无负载时延：</span></p>
+                        <div contenteditable="false" spellcheck="false" class="mathjax-block md-end-block md-math-block md-rawblock"
+                            id="mathjax-n7" cid="n7" mdtype="math_block">
+                            <div class="md-rawblock-container md-math-container" tabindex="-1">
+                                <div class="MathJax_SVG_Display" style="text-align: center;"><span class="MathJax_SVG"
+                                        id="MathJax-Element-93-Frame" tabindex="-1" style="font-size: 100%; display: inline-block;"><svg
+                                            xmlns:xlink="http://www.w3.org/1999/xlink" width="22.791ex" height="4.562ex"
+                                            viewBox="0 -1208.2 9812.8 1964.1" role="img" focusable="false"
+                                            style="vertical-align: -1.756ex; max-width: 100%;">
+                                            <defs>
+                                                <path stroke-width="0" id="E96-MJMATHI-54"
+                                                    d="M40 437Q21 437 21 445Q21 450 37 501T71 602L88 651Q93 669 101 677H569H659Q691 677 697 676T704 667Q704 661 687 553T668 444Q668 437 649 437Q640 437 637 437T631 442L629 445Q629 451 635 490T641 551Q641 586 628 604T573 629Q568 630 515 631Q469 631 457 630T439 622Q438 621 368 343T298 60Q298 48 386 46Q418 46 427 45T436 36Q436 31 433 22Q429 4 424 1L422 0Q419 0 415 0Q410 0 363 1T228 2Q99 2 64 0H49Q43 6 43 9T45 27Q49 40 55 46H83H94Q174 46 189 55Q190 56 191 56Q196 59 201 76T241 233Q258 301 269 344Q339 619 339 625Q339 630 310 630H279Q212 630 191 624Q146 614 121 583T67 467Q60 445 57 441T43 437H40Z">
+                                                </path>
+                                                <path stroke-width="0" id="E96-MJMAIN-3D"
+                                                    d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z">
+                                                </path>
+                                                <path stroke-width="0" id="E96-MJMATHI-68"
+                                                    d="M137 683Q138 683 209 688T282 694Q294 694 294 685Q294 674 258 534Q220 386 220 383Q220 381 227 388Q288 442 357 442Q411 442 444 415T478 336Q478 285 440 178T402 50Q403 36 407 31T422 26Q450 26 474 56T513 138Q516 149 519 151T535 153Q555 153 555 145Q555 144 551 130Q535 71 500 33Q466 -10 419 -10H414Q367 -10 346 17T325 74Q325 90 361 192T398 345Q398 404 354 404H349Q266 404 205 306L198 293L164 158Q132 28 127 16Q114 -11 83 -11Q69 -11 59 -2T48 16Q48 30 121 320L195 616Q195 629 188 632T149 637H128Q122 643 122 645T124 664Q129 683 137 683Z">
+                                                </path>
+                                                <path stroke-width="0" id="E96-MJMAIN-28"
+                                                    d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z">
+                                                </path>
+                                                <path stroke-width="0" id="E96-MJMATHI-6E"
+                                                    d="M21 287Q22 293 24 303T36 341T56 388T89 425T135 442Q171 442 195 424T225 390T231 369Q231 367 232 367L243 378Q304 442 382 442Q436 442 469 415T503 336T465 179T427 52Q427 26 444 26Q450 26 453 27Q482 32 505 65T540 145Q542 153 560 153Q580 153 580 145Q580 144 576 130Q568 101 554 73T508 17T439 -10Q392 -10 371 17T350 73Q350 92 386 193T423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 180T152 343Q153 348 153 366Q153 405 129 405Q91 405 66 305Q60 285 60 284Q58 278 41 278H27Q21 284 21 287Z">
+                                                </path>
+                                                <path stroke-width="0" id="E96-MJMATHI-62"
+                                                    d="M73 647Q73 657 77 670T89 683Q90 683 161 688T234 694Q246 694 246 685T212 542Q204 508 195 472T180 418L176 399Q176 396 182 402Q231 442 283 442Q345 442 383 396T422 280Q422 169 343 79T173 -11Q123 -11 82 27T40 150V159Q40 180 48 217T97 414Q147 611 147 623T109 637Q104 637 101 637H96Q86 637 83 637T76 640T73 647ZM336 325V331Q336 405 275 405Q258 405 240 397T207 376T181 352T163 330L157 322L136 236Q114 150 114 114Q114 66 138 42Q154 26 178 26Q211 26 245 58Q270 81 285 114T318 219Q336 291 336 325Z">
+                                                </path>
+                                                <path stroke-width="0" id="E96-MJMAIN-2B"
+                                                    d="M56 237T56 250T70 270H369V420L370 570Q380 583 389 583Q402 583 409 568V270H707Q722 262 722 250T707 230H409V-68Q401 -82 391 -82H389H387Q375 -82 369 -68V230H70Q56 237 56 250Z">
+                                                </path>
+                                                <path stroke-width="0" id="E96-MJMAIN-394"
+                                                    d="M51 0Q46 4 46 7Q46 9 215 357T388 709Q391 716 416 716Q439 716 444 709Q447 705 616 357T786 7Q786 4 781 0H51ZM507 344L384 596L137 92L383 91H630Q630 93 507 344Z">
+                                                </path>
+                                                <path stroke-width="0" id="E96-MJMAIN-29"
+                                                    d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z">
+                                                </path>
+                                                <path stroke-width="0" id="E96-MJSZ2-28"
+                                                    d="M180 96T180 250T205 541T266 770T353 944T444 1069T527 1150H555Q561 1144 561 1141Q561 1137 545 1120T504 1072T447 995T386 878T330 721T288 513T272 251Q272 133 280 56Q293 -87 326 -209T399 -405T475 -531T536 -609T561 -640Q561 -643 555 -649H527Q483 -612 443 -568T353 -443T266 -270T205 -41Z">
+                                                </path>
+                                                <path stroke-width="0" id="E96-MJSZ2-29"
+                                                    d="M35 1138Q35 1150 51 1150H56H69Q113 1113 153 1069T243 944T330 771T391 541T416 250T391 -40T330 -270T243 -443T152 -568T69 -649H56Q43 -649 39 -647T35 -637Q65 -607 110 -548Q283 -316 316 56Q324 133 324 251Q324 368 316 445Q278 877 48 1123Q36 1137 35 1138Z">
+                                                </path>
+                                            </defs>
+                                            <g stroke="currentColor" fill="currentColor" stroke-width="0"
+                                                transform="matrix(1 0 0 -1 0 0)">
+                                                <use xlink:href="#E96-MJMATHI-54" x="0" y="0"></use>
+                                                <g transform="translate(584,-150)"><text font-family="STIXGeneral, 'PingFang SC', serif"
+                                                        stroke="none" transform="scale(35.539) matrix(1 0 0 -1 0 0)">无</text>
+                                                    <g transform="translate(568,0)"><text
+                                                            font-family="STIXGeneral, 'PingFang SC', serif" stroke="none"
+                                                            transform="scale(35.539) matrix(1 0 0 -1 0 0)">负</text></g>
+                                                    <g transform="translate(1137,0)"><text
+                                                            font-family="STIXGeneral, 'PingFang SC', serif" stroke="none"
+                                                            transform="scale(35.539) matrix(1 0 0 -1 0 0)">载</text></g>
+                                                    <g transform="translate(1705,0)"><text
+                                                            font-family="STIXGeneral, 'PingFang SC', serif" stroke="none"
+                                                            transform="scale(35.539) matrix(1 0 0 -1 0 0)">时</text></g>
+                                                    <g transform="translate(2274,0)"><text
+                                                            font-family="STIXGeneral, 'PingFang SC', serif" stroke="none"
+                                                            transform="scale(35.539) matrix(1 0 0 -1 0 0)">延</text></g>
+                                                </g>
+                                                <use xlink:href="#E96-MJMAIN-3D" x="3804" y="0"></use>
+                                                <use xlink:href="#E96-MJMATHI-68" x="4860" y="0"></use>
+                                                <g transform="translate(5603,0)">
+                                                    <use xlink:href="#E96-MJSZ2-28"></use>
+                                                    <g transform="translate(597,0)">
+                                                        <g transform="translate(120,0)">
+                                                            <rect stroke="none" width="720" height="60" x="0" y="220"></rect>
+                                                            <use xlink:href="#E96-MJMATHI-6E" x="60" y="676"></use>
+                                                            <use xlink:href="#E96-MJMATHI-62" x="145" y="-686"></use>
+                                                        </g>
+                                                    </g>
+                                                    <use xlink:href="#E96-MJMAIN-2B" x="1779" y="0"></use>
+                                                    <use xlink:href="#E96-MJMAIN-394" x="2779" y="0"></use>
+                                                    <use xlink:href="#E96-MJSZ2-29" x="3612" y="-1"></use>
+                                                </g>
+                                            </g>
+                                        </svg></span></div>
+                                <script type="math/tex; mode=display"
+                                    id="MathJax-Element-93">T_{无负载时延}=h\left(\frac nb+\Delta\right)</script>
+                            </div>
+                        </div>
+                        <p><span>其中</span><span class="MathJax_SVG" tabindex="-1" style="font-size: 100%; display: inline-block;"><svg
+                                    xmlns:xlink="http://www.w3.org/1999/xlink" width="1.338ex" height="1.994ex"
+                                    viewBox="0 -755.9 576 858.4" role="img" focusable="false" style="vertical-align: -0.238ex;">
+                                    <defs>
+                                        <path stroke-width="0" id="E4-MJMATHI-68"
+                                            d="M137 683Q138 683 209 688T282 694Q294 694 294 685Q294 674 258 534Q220 386 220 383Q220 381 227 388Q288 442 357 442Q411 442 444 415T478 336Q478 285 440 178T402 50Q403 36 407 31T422 26Q450 26 474 56T513 138Q516 149 519 151T535 153Q555 153 555 145Q555 144 551 130Q535 71 500 33Q466 -10 419 -10H414Q367 -10 346 17T325 74Q325 90 361 192T398 345Q398 404 354 404H349Q266 404 205 306L198 293L164 158Q132 28 127 16Q114 -11 83 -11Q69 -11 59 -2T48 16Q48 30 121 320L195 616Q195 629 188 632T149 637H128Q122 643 122 645T124 664Q129 683 137 683Z">
+                                        </path>
+                                    </defs>
+                                    <g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)">
+                                        <use xlink:href="#E4-MJMATHI-68" x="0" y="0"></use>
+                                    </g>
+                                </svg></span>
+                            <script type="math/tex">h</script><span>为跳数，</span><span class="MathJax_SVG" tabindex="-1"
+                                style="font-size: 100%; display: inline-block;"><svg xmlns:xlink="http://www.w3.org/1999/xlink"
+                                    width="1.394ex" height="1.41ex" viewBox="0 -504.6 600 607.1" role="img" focusable="false"
+                                    style="vertical-align: -0.238ex;">
+                                    <defs>
+                                        <path stroke-width="0" id="E5-MJMATHI-6E"
+                                            d="M21 287Q22 293 24 303T36 341T56 388T89 425T135 442Q171 442 195 424T225 390T231 369Q231 367 232 367L243 378Q304 442 382 442Q436 442 469 415T503 336T465 179T427 52Q427 26 444 26Q450 26 453 27Q482 32 505 65T540 145Q542 153 560 153Q580 153 580 145Q580 144 576 130Q568 101 554 73T508 17T439 -10Q392 -10 371 17T350 73Q350 92 386 193T423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 180T152 343Q153 348 153 366Q153 405 129 405Q91 405 66 305Q60 285 60 284Q58 278 41 278H27Q21 284 21 287Z">
+                                        </path>
+                                    </defs>
+                                    <g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)">
+                                        <use xlink:href="#E5-MJMATHI-6E" x="0" y="0"></use>
+                                    </g>
+                                </svg></span>
+                            <script type="math/tex">n</script><span>为数据包，</span><span class="MathJax_SVG" tabindex="-1"
+                                style="font-size: 100%; display: inline-block;"><svg xmlns:xlink="http://www.w3.org/1999/xlink"
+                                    width="0.996ex" height="1.994ex" viewBox="0 -755.9 429 858.4" role="img" focusable="false"
+                                    style="vertical-align: -0.238ex;">
+                                    <defs>
+                                        <path stroke-width="0" id="E6-MJMATHI-62"
+                                            d="M73 647Q73 657 77 670T89 683Q90 683 161 688T234 694Q246 694 246 685T212 542Q204 508 195 472T180 418L176 399Q176 396 182 402Q231 442 283 442Q345 442 383 396T422 280Q422 169 343 79T173 -11Q123 -11 82 27T40 150V159Q40 180 48 217T97 414Q147 611 147 623T109 637Q104 637 101 637H96Q86 637 83 637T76 640T73 647ZM336 325V331Q336 405 275 405Q258 405 240 397T207 376T181 352T163 330L157 322L136 236Q114 150 114 114Q114 66 138 42Q154 26 178 26Q211 26 245 58Q270 81 285 114T318 219Q336 291 336 325Z">
+                                        </path>
+                                    </defs>
+                                    <g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)">
+                                        <use xlink:href="#E6-MJMATHI-62" x="0" y="0"></use>
+                                    </g>
+                                </svg></span>
+                            <script type="math/tex">b</script><span>为带宽，</span><span class="MathJax_SVG" tabindex="-1"
+                                style="font-size: 100%; display: inline-block;"><svg xmlns:xlink="http://www.w3.org/1999/xlink"
+                                    width="1.935ex" height="1.994ex" viewBox="0 -806.1 833 858.4" role="img" focusable="false"
+                                    style="vertical-align: -0.121ex;">
+                                    <defs>
+                                        <path stroke-width="0" id="E8-MJMAIN-394"
+                                            d="M51 0Q46 4 46 7Q46 9 215 357T388 709Q391 716 416 716Q439 716 444 709Q447 705 616 357T786 7Q786 4 781 0H51ZM507 344L384 596L137 92L383 91H630Q630 93 507 344Z">
+                                        </path>
+                                    </defs>
+                                    <g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)">
+                                        <use xlink:href="#E8-MJMAIN-394" x="0" y="0"></use>
+                                    </g>
+                                </svg></span>
+                            <script type="math/tex">\Delta</script><span>为每一跳的额外路由延迟。</span></p>
+                        <h3><a name="带宽" class="md-header-anchor"></a><span>带宽</span></h3>
+                        <p><span>有效带宽会由于数据包编码密度，和交换机在做出其路由决定时将数据包阻塞了</span><span class="MathJax_SVG" tabindex="-1"
+                                style="font-size: 100%; display: inline-block;"><svg xmlns:xlink="http://www.w3.org/1999/xlink"
+                                    width="1.935ex" height="1.994ex" viewBox="0 -806.1 833 858.4" role="img" focusable="false"
+                                    style="vertical-align: -0.121ex;">
+                                    <defs>
+                                        <path stroke-width="0" id="E8-MJMAIN-394"
+                                            d="M51 0Q46 4 46 7Q46 9 215 357T388 709Q391 716 416 716Q439 716 444 709Q447 705 616 357T786 7Q786 4 781 0H51ZM507 344L384 596L137 92L383 91H630Q630 93 507 344Z">
+                                        </path>
+                                    </defs>
+                                    <g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)">
+                                        <use xlink:href="#E8-MJMAIN-394" x="0" y="0"></use>
+                                    </g>
+                                </svg></span>
+                            <script type="math/tex">\Delta</script><span>个周期的路由延迟，导致原始链路带宽降低：</span></p>
+                        <div contenteditable="false" spellcheck="false" class="mathjax-block md-end-block md-math-block md-rawblock"
+                            id="mathjax-n11" cid="n11" mdtype="math_block">
+                            <div class="md-rawblock-container md-math-container" tabindex="-1">
+                                <div class="MathJax_SVG_Display" style="text-align: center;"><span class="MathJax_SVG"
+                                        id="MathJax-Element-94-Frame" tabindex="-1" style="font-size: 100%; display: inline-block;"><svg
+                                            xmlns:xlink="http://www.w3.org/1999/xlink" width="15.383ex" height="4.912ex"
+                                            viewBox="0 -1208.2 6623.1 2114.9" role="img" focusable="false"
+                                            style="vertical-align: -2.106ex; max-width: 100%;">
+                                            <defs>
+                                                <path stroke-width="0" id="E97-MJMATHI-62"
+                                                    d="M73 647Q73 657 77 670T89 683Q90 683 161 688T234 694Q246 694 246 685T212 542Q204 508 195 472T180 418L176 399Q176 396 182 402Q231 442 283 442Q345 442 383 396T422 280Q422 169 343 79T173 -11Q123 -11 82 27T40 150V159Q40 180 48 217T97 414Q147 611 147 623T109 637Q104 637 101 637H96Q86 637 83 637T76 640T73 647ZM336 325V331Q336 405 275 405Q258 405 240 397T207 376T181 352T163 330L157 322L136 236Q114 150 114 114Q114 66 138 42Q154 26 178 26Q211 26 245 58Q270 81 285 114T318 219Q336 291 336 325Z">
+                                                </path>
+                                                <path stroke-width="0" id="E97-MJMATHI-6E"
+                                                    d="M21 287Q22 293 24 303T36 341T56 388T89 425T135 442Q171 442 195 424T225 390T231 369Q231 367 232 367L243 378Q304 442 382 442Q436 442 469 415T503 336T465 179T427 52Q427 26 444 26Q450 26 453 27Q482 32 505 65T540 145Q542 153 560 153Q580 153 580 145Q580 144 576 130Q568 101 554 73T508 17T439 -10Q392 -10 371 17T350 73Q350 92 386 193T423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 180T152 343Q153 348 153 366Q153 405 129 405Q91 405 66 305Q60 285 60 284Q58 278 41 278H27Q21 284 21 287Z">
+                                                </path>
+                                                <path stroke-width="0" id="E97-MJMAIN-2B"
+                                                    d="M56 237T56 250T70 270H369V420L370 570Q380 583 389 583Q402 583 409 568V270H707Q722 262 722 250T707 230H409V-68Q401 -82 391 -82H389H387Q375 -82 369 -68V230H70Q56 237 56 250Z">
+                                                </path>
+                                                <path stroke-width="0" id="E97-MJMATHI-45"
+                                                    d="M492 213Q472 213 472 226Q472 230 477 250T482 285Q482 316 461 323T364 330H312Q311 328 277 192T243 52Q243 48 254 48T334 46Q428 46 458 48T518 61Q567 77 599 117T670 248Q680 270 683 272Q690 274 698 274Q718 274 718 261Q613 7 608 2Q605 0 322 0H133Q31 0 31 11Q31 13 34 25Q38 41 42 43T65 46Q92 46 125 49Q139 52 144 61Q146 66 215 342T285 622Q285 629 281 629Q273 632 228 634H197Q191 640 191 642T193 659Q197 676 203 680H757Q764 676 764 669Q764 664 751 557T737 447Q735 440 717 440H705Q698 445 698 453L701 476Q704 500 704 528Q704 558 697 578T678 609T643 625T596 632T532 634H485Q397 633 392 631Q388 629 386 622Q385 619 355 499T324 377Q347 376 372 376H398Q464 376 489 391T534 472Q538 488 540 490T557 493Q562 493 565 493T570 492T572 491T574 487T577 483L544 351Q511 218 508 216Q505 213 492 213Z">
+                                                </path>
+                                                <path stroke-width="0" id="E97-MJMATHI-77"
+                                                    d="M580 385Q580 406 599 424T641 443Q659 443 674 425T690 368Q690 339 671 253Q656 197 644 161T609 80T554 12T482 -11Q438 -11 404 5T355 48Q354 47 352 44Q311 -11 252 -11Q226 -11 202 -5T155 14T118 53T104 116Q104 170 138 262T173 379Q173 380 173 381Q173 390 173 393T169 400T158 404H154Q131 404 112 385T82 344T65 302T57 280Q55 278 41 278H27Q21 284 21 287Q21 293 29 315T52 366T96 418T161 441Q204 441 227 416T250 358Q250 340 217 250T184 111Q184 65 205 46T258 26Q301 26 334 87L339 96V119Q339 122 339 128T340 136T341 143T342 152T345 165T348 182T354 206T362 238T373 281Q402 395 406 404Q419 431 449 431Q468 431 475 421T483 402Q483 389 454 274T422 142Q420 131 420 107V100Q420 85 423 71T442 42T487 26Q558 26 600 148Q609 171 620 213T632 273Q632 306 619 325T593 357T580 385Z">
+                                                </path>
+                                                <path stroke-width="0" id="E97-MJMAIN-394"
+                                                    d="M51 0Q46 4 46 7Q46 9 215 357T388 709Q391 716 416 716Q439 716 444 709Q447 705 616 357T786 7Q786 4 781 0H51ZM507 344L384 596L137 92L383 91H630Q630 93 507 344Z">
+                                                </path>
+                                            </defs>
+                                            <g stroke="currentColor" fill="currentColor" stroke-width="0"
+                                                transform="matrix(1 0 0 -1 0 0)">
+                                                <use xlink:href="#E97-MJMATHI-62" x="0" y="0"></use>
+                                                <g transform="translate(429,0)">
+                                                    <g transform="translate(120,0)">
+                                                        <rect stroke="none" width="5954" height="60" x="0" y="220"></rect>
+                                                        <use xlink:href="#E97-MJMATHI-6E" x="2677" y="676"></use>
+                                                        <g transform="translate(60,-686)">
+                                                            <use xlink:href="#E97-MJMATHI-6E" x="0" y="0"></use>
+                                                            <use xlink:href="#E97-MJMAIN-2B" x="822" y="0"></use>
+                                                            <g transform="translate(1822,0)">
+                                                                <use xlink:href="#E97-MJMATHI-6E" x="0" y="0"></use>
+                                                                <use transform="scale(0.707)" xlink:href="#E97-MJMATHI-45" x="848"
+                                                                    y="-213"></use>
+                                                            </g>
+                                                            <use xlink:href="#E97-MJMAIN-2B" x="3284" y="0"></use>
+                                                            <use xlink:href="#E97-MJMATHI-77" x="4285" y="0"></use>
+                                                            <use xlink:href="#E97-MJMAIN-394" x="5001" y="0"></use>
+                                                        </g>
+                                                    </g>
+                                                </g>
+                                            </g>
+                                        </svg></span></div>
+                                <script type="math/tex; mode=display" id="MathJax-Element-94">b\frac{n}{n+n_E+w\Delta}</script>
+                            </div>
+                        </div>
+                        <p><span class="MathJax_SVG" tabindex="-1" style="font-size: 100%; display: inline-block;"><svg
+                                    xmlns:xlink="http://www.w3.org/1999/xlink" width="2.881ex" height="1.644ex"
+                                    viewBox="0 -504.6 1240.2 707.6" role="img" focusable="false" style="vertical-align: -0.472ex;">
+                                    <defs>
+                                        <path stroke-width="0" id="E9-MJMATHI-6E"
+                                            d="M21 287Q22 293 24 303T36 341T56 388T89 425T135 442Q171 442 195 424T225 390T231 369Q231 367 232 367L243 378Q304 442 382 442Q436 442 469 415T503 336T465 179T427 52Q427 26 444 26Q450 26 453 27Q482 32 505 65T540 145Q542 153 560 153Q580 153 580 145Q580 144 576 130Q568 101 554 73T508 17T439 -10Q392 -10 371 17T350 73Q350 92 386 193T423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 180T152 343Q153 348 153 366Q153 405 129 405Q91 405 66 305Q60 285 60 284Q58 278 41 278H27Q21 284 21 287Z">
+                                        </path>
+                                        <path stroke-width="0" id="E9-MJMATHI-45"
+                                            d="M492 213Q472 213 472 226Q472 230 477 250T482 285Q482 316 461 323T364 330H312Q311 328 277 192T243 52Q243 48 254 48T334 46Q428 46 458 48T518 61Q567 77 599 117T670 248Q680 270 683 272Q690 274 698 274Q718 274 718 261Q613 7 608 2Q605 0 322 0H133Q31 0 31 11Q31 13 34 25Q38 41 42 43T65 46Q92 46 125 49Q139 52 144 61Q146 66 215 342T285 622Q285 629 281 629Q273 632 228 634H197Q191 640 191 642T193 659Q197 676 203 680H757Q764 676 764 669Q764 664 751 557T737 447Q735 440 717 440H705Q698 445 698 453L701 476Q704 500 704 528Q704 558 697 578T678 609T643 625T596 632T532 634H485Q397 633 392 631Q388 629 386 622Q385 619 355 499T324 377Q347 376 372 376H398Q464 376 489 391T534 472Q538 488 540 490T557 493Q562 493 565 493T570 492T572 491T574 487T577 483L544 351Q511 218 508 216Q505 213 492 213Z">
+                                        </path>
+                                    </defs>
+                                    <g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)">
+                                        <use xlink:href="#E9-MJMATHI-6E" x="0" y="0"></use>
+                                        <use transform="scale(0.707)" xlink:href="#E9-MJMATHI-45" x="848" y="-213"></use>
+                                    </g>
+                                </svg></span>
+                            <script type="math/tex">n_E</script><span>为增加的数据包编码，</span><span class="MathJax_SVG" tabindex="-1"
+                                style="font-size: 100%; display: inline-block;"><svg xmlns:xlink="http://www.w3.org/1999/xlink"
+                                    width="1.663ex" height="1.41ex" viewBox="0 -504.6 716 607.1" role="img" focusable="false"
+                                    style="vertical-align: -0.238ex;">
+                                    <defs>
+                                        <path stroke-width="0" id="E10-MJMATHI-77"
+                                            d="M580 385Q580 406 599 424T641 443Q659 443 674 425T690 368Q690 339 671 253Q656 197 644 161T609 80T554 12T482 -11Q438 -11 404 5T355 48Q354 47 352 44Q311 -11 252 -11Q226 -11 202 -5T155 14T118 53T104 116Q104 170 138 262T173 379Q173 380 173 381Q173 390 173 393T169 400T158 404H154Q131 404 112 385T82 344T65 302T57 280Q55 278 41 278H27Q21 284 21 287Q21 293 29 315T52 366T96 418T161 441Q204 441 227 416T250 358Q250 340 217 250T184 111Q184 65 205 46T258 26Q301 26 334 87L339 96V119Q339 122 339 128T340 136T341 143T342 152T345 165T348 182T354 206T362 238T373 281Q402 395 406 404Q419 431 449 431Q468 431 475 421T483 402Q483 389 454 274T422 142Q420 131 420 107V100Q420 85 423 71T442 42T487 26Q558 26 600 148Q609 171 620 213T632 273Q632 306 619 325T593 357T580 385Z">
+                                        </path>
+                                    </defs>
+                                    <g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)">
+                                        <use xlink:href="#E10-MJMATHI-77" x="0" y="0"></use>
+                                    </g>
+                                </svg></span>
+                            <script type="math/tex">w</script><span>为通道宽度。</span></p>
+                        <p><strong><span>对剖带宽</span></strong><span>：网络中存在通道的最小集合，如果去掉这些通道，就会将网络分为连个相等的非连接的节点集合，这个最小集合中的通道的带宽的总和就是对剖带宽。</span>
+                        </p>
+                        <p><span>如果处理器对网络提交的带宽需求(建议带宽)不大，时延保持低，交付带宽随建议带宽的增加而上升；但是，在某一点，要求更多得到带宽仅仅加剧了资源的竞争，使时延急剧上升。网络本质上只能传送它能应付的流量，额外的请求只能在缓存中积聚起来。</span>
+                        </p>
+                        <h2><a name="静态互连网络" class="md-header-anchor"></a><span>静态互连网络</span></h2>
+                        <h3><a name="一维线性阵列" class="md-header-anchor"></a><span>一维线性阵列</span></h3>
+                        <p><img src="D:\Xincheng's Files\notes\parallel\pics\11.png" referrerpolicy="no-referrer" alt="linear"></p>
+                        <p><span>非环的一位阵列直径为</span><span class="MathJax_SVG" tabindex="-1"
+                                style="font-size: 100%; display: inline-block;"><svg xmlns:xlink="http://www.w3.org/1999/xlink"
+                                    width="6.063ex" height="2.11ex" viewBox="0 -755.9 2610.4 908.7" role="img" focusable="false"
+                                    style="vertical-align: -0.355ex;">
+                                    <defs>
+                                        <path stroke-width="0" id="E12-MJMATHI-4E"
+                                            d="M234 637Q231 637 226 637Q201 637 196 638T191 649Q191 676 202 682Q204 683 299 683Q376 683 387 683T401 677Q612 181 616 168L670 381Q723 592 723 606Q723 633 659 637Q635 637 635 648Q635 650 637 660Q641 676 643 679T653 683Q656 683 684 682T767 680Q817 680 843 681T873 682Q888 682 888 672Q888 650 880 642Q878 637 858 637Q787 633 769 597L620 7Q618 0 599 0Q585 0 582 2Q579 5 453 305L326 604L261 344Q196 88 196 79Q201 46 268 46H278Q284 41 284 38T282 19Q278 6 272 0H259Q228 2 151 2Q123 2 100 2T63 2T46 1Q31 1 31 10Q31 14 34 26T39 40Q41 46 62 46Q130 49 150 85Q154 91 221 362L289 634Q287 635 234 637Z">
+                                        </path>
+                                        <path stroke-width="0" id="E12-MJMAIN-2212"
+                                            d="M84 237T84 250T98 270H679Q694 262 694 250T679 230H98Q84 237 84 250Z"></path>
+                                        <path stroke-width="0" id="E12-MJMAIN-31"
+                                            d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z">
+                                        </path>
+                                    </defs>
+                                    <g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)">
+                                        <use xlink:href="#E12-MJMATHI-4E" x="0" y="0"></use>
+                                        <use xlink:href="#E12-MJMAIN-2212" x="1110" y="0"></use>
+                                        <use xlink:href="#E12-MJMAIN-31" x="2110" y="0"></use>
+                                    </g>
+                                </svg></span>
+                            <script type="math/tex">N-1</script><span>，对剖宽度为1。单向环的直径为</span><span class="MathJax_SVG" tabindex="-1"
+                                style="font-size: 100%; display: inline-block;"><svg xmlns:xlink="http://www.w3.org/1999/xlink"
+                                    width="6.063ex" height="2.11ex" viewBox="0 -755.9 2610.4 908.7" role="img" focusable="false"
+                                    style="vertical-align: -0.355ex;">
+                                    <defs>
+                                        <path stroke-width="0" id="E12-MJMATHI-4E"
+                                            d="M234 637Q231 637 226 637Q201 637 196 638T191 649Q191 676 202 682Q204 683 299 683Q376 683 387 683T401 677Q612 181 616 168L670 381Q723 592 723 606Q723 633 659 637Q635 637 635 648Q635 650 637 660Q641 676 643 679T653 683Q656 683 684 682T767 680Q817 680 843 681T873 682Q888 682 888 672Q888 650 880 642Q878 637 858 637Q787 633 769 597L620 7Q618 0 599 0Q585 0 582 2Q579 5 453 305L326 604L261 344Q196 88 196 79Q201 46 268 46H278Q284 41 284 38T282 19Q278 6 272 0H259Q228 2 151 2Q123 2 100 2T63 2T46 1Q31 1 31 10Q31 14 34 26T39 40Q41 46 62 46Q130 49 150 85Q154 91 221 362L289 634Q287 635 234 637Z">
+                                        </path>
+                                        <path stroke-width="0" id="E12-MJMAIN-2212"
+                                            d="M84 237T84 250T98 270H679Q694 262 694 250T679 230H98Q84 237 84 250Z"></path>
+                                        <path stroke-width="0" id="E12-MJMAIN-31"
+                                            d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z">
+                                        </path>
+                                    </defs>
+                                    <g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)">
+                                        <use xlink:href="#E12-MJMATHI-4E" x="0" y="0"></use>
+                                        <use xlink:href="#E12-MJMAIN-2212" x="1110" y="0"></use>
+                                        <use xlink:href="#E12-MJMAIN-31" x="2110" y="0"></use>
+                                    </g>
+                                </svg></span>
+                            <script type="math/tex">N-1</script><span>，对剖宽度为2；双向环直径为</span><span class="MathJax_SVG" tabindex="-1"
+                                style="font-size: 100%; display: inline-block;"><svg xmlns:xlink="http://www.w3.org/1999/xlink"
+                                    width="4.385ex" height="2.577ex" viewBox="0 -806.1 1888 1109.7" role="img" focusable="false"
+                                    style="vertical-align: -0.705ex;">
+                                    <defs>
+                                        <path stroke-width="0" id="E13-MJMATHI-4E"
+                                            d="M234 637Q231 637 226 637Q201 637 196 638T191 649Q191 676 202 682Q204 683 299 683Q376 683 387 683T401 677Q612 181 616 168L670 381Q723 592 723 606Q723 633 659 637Q635 637 635 648Q635 650 637 660Q641 676 643 679T653 683Q656 683 684 682T767 680Q817 680 843 681T873 682Q888 682 888 672Q888 650 880 642Q878 637 858 637Q787 633 769 597L620 7Q618 0 599 0Q585 0 582 2Q579 5 453 305L326 604L261 344Q196 88 196 79Q201 46 268 46H278Q284 41 284 38T282 19Q278 6 272 0H259Q228 2 151 2Q123 2 100 2T63 2T46 1Q31 1 31 10Q31 14 34 26T39 40Q41 46 62 46Q130 49 150 85Q154 91 221 362L289 634Q287 635 234 637Z">
+                                        </path>
+                                        <path stroke-width="0" id="E13-MJMAIN-2F"
+                                            d="M423 750Q432 750 438 744T444 730Q444 725 271 248T92 -240Q85 -250 75 -250Q68 -250 62 -245T56 -231Q56 -221 230 257T407 740Q411 750 423 750Z">
+                                        </path>
+                                        <path stroke-width="0" id="E13-MJMAIN-32"
+                                            d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z">
+                                        </path>
+                                    </defs>
+                                    <g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)">
+                                        <use xlink:href="#E13-MJMATHI-4E" x="0" y="0"></use>
+                                        <use xlink:href="#E13-MJMAIN-2F" x="888" y="0"></use>
+                                        <use xlink:href="#E13-MJMAIN-32" x="1388" y="0"></use>
+                                    </g>
+                                </svg></span>
+                            <script type="math/tex">N/2</script><span>，对剖宽度为2。</span></p>
+                        <h3><a name="多维网格和多维环" class="md-header-anchor"></a><span>多维网格和多维环</span></h3>
+                        <p><img src="D:\Xincheng's Files\notes\parallel\pics\12.png" referrerpolicy="no-referrer" alt="2-dim"></p>
+                        <p><span>假设一个d维k元网络，节点个数</span><span class="MathJax_SVG" tabindex="-1"
+                                style="font-size: 100%; display: inline-block;"><svg xmlns:xlink="http://www.w3.org/1999/xlink"
+                                    width="7.461ex" height="2.344ex" viewBox="0 -906.7 3212.4 1009.2" role="img" focusable="false"
+                                    style="vertical-align: -0.238ex; max-width: 6400px;">
+                                    <defs>
+                                        <path stroke-width="0" id="E14-MJMATHI-4E"
+                                            d="M234 637Q231 637 226 637Q201 637 196 638T191 649Q191 676 202 682Q204 683 299 683Q376 683 387 683T401 677Q612 181 616 168L670 381Q723 592 723 606Q723 633 659 637Q635 637 635 648Q635 650 637 660Q641 676 643 679T653 683Q656 683 684 682T767 680Q817 680 843 681T873 682Q888 682 888 672Q888 650 880 642Q878 637 858 637Q787 633 769 597L620 7Q618 0 599 0Q585 0 582 2Q579 5 453 305L326 604L261 344Q196 88 196 79Q201 46 268 46H278Q284 41 284 38T282 19Q278 6 272 0H259Q228 2 151 2Q123 2 100 2T63 2T46 1Q31 1 31 10Q31 14 34 26T39 40Q41 46 62 46Q130 49 150 85Q154 91 221 362L289 634Q287 635 234 637Z">
+                                        </path>
+                                        <path stroke-width="0" id="E14-MJMAIN-3D"
+                                            d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z">
+                                        </path>
+                                        <path stroke-width="0" id="E14-MJMATHI-6B"
+                                            d="M121 647Q121 657 125 670T137 683Q138 683 209 688T282 694Q294 694 294 686Q294 679 244 477Q194 279 194 272Q213 282 223 291Q247 309 292 354T362 415Q402 442 438 442Q468 442 485 423T503 369Q503 344 496 327T477 302T456 291T438 288Q418 288 406 299T394 328Q394 353 410 369T442 390L458 393Q446 405 434 405H430Q398 402 367 380T294 316T228 255Q230 254 243 252T267 246T293 238T320 224T342 206T359 180T365 147Q365 130 360 106T354 66Q354 26 381 26Q429 26 459 145Q461 153 479 153H483Q499 153 499 144Q499 139 496 130Q455 -11 378 -11Q333 -11 305 15T277 90Q277 108 280 121T283 145Q283 167 269 183T234 206T200 217T182 220H180Q168 178 159 139T145 81T136 44T129 20T122 7T111 -2Q98 -11 83 -11Q66 -11 57 -1T48 16Q48 26 85 176T158 471L195 616Q196 629 188 632T149 637H144Q134 637 131 637T124 640T121 647Z">
+                                        </path>
+                                        <path stroke-width="0" id="E14-MJMATHI-64"
+                                            d="M366 683Q367 683 438 688T511 694Q523 694 523 686Q523 679 450 384T375 83T374 68Q374 26 402 26Q411 27 422 35Q443 55 463 131Q469 151 473 152Q475 153 483 153H487H491Q506 153 506 145Q506 140 503 129Q490 79 473 48T445 8T417 -8Q409 -10 393 -10Q359 -10 336 5T306 36L300 51Q299 52 296 50Q294 48 292 46Q233 -10 172 -10Q117 -10 75 30T33 157Q33 205 53 255T101 341Q148 398 195 420T280 442Q336 442 364 400Q369 394 369 396Q370 400 396 505T424 616Q424 629 417 632T378 637H357Q351 643 351 645T353 664Q358 683 366 683ZM352 326Q329 405 277 405Q242 405 210 374T160 293Q131 214 119 129Q119 126 119 118T118 106Q118 61 136 44T179 26Q233 26 290 98L298 109L352 326Z">
+                                        </path>
+                                    </defs>
+                                    <g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)">
+                                        <use xlink:href="#E14-MJMATHI-4E" x="0" y="0"></use>
+                                        <use xlink:href="#E14-MJMAIN-3D" x="1165" y="0"></use>
+                                        <g transform="translate(2221,0)">
+                                            <use xlink:href="#E14-MJMATHI-6B" x="0" y="0"></use>
+                                            <use transform="scale(0.707)" xlink:href="#E14-MJMATHI-64" x="736" y="513"></use>
+                                        </g>
+                                    </g>
+                                </svg></span>
+                            <script type="math/tex">N=k^d</script><span>，那么节点的度在</span><span class="MathJax_SVG" tabindex="-1"
+                                style="font-size: 100%; display: inline-block;"><svg xmlns:xlink="http://www.w3.org/1999/xlink"
+                                    width="1.215ex" height="1.994ex" viewBox="0 -755.9 523 858.4" role="img" focusable="false"
+                                    style="vertical-align: -0.238ex;">
+                                    <defs>
+                                        <path stroke-width="0" id="E15-MJMATHI-64"
+                                            d="M366 683Q367 683 438 688T511 694Q523 694 523 686Q523 679 450 384T375 83T374 68Q374 26 402 26Q411 27 422 35Q443 55 463 131Q469 151 473 152Q475 153 483 153H487H491Q506 153 506 145Q506 140 503 129Q490 79 473 48T445 8T417 -8Q409 -10 393 -10Q359 -10 336 5T306 36L300 51Q299 52 296 50Q294 48 292 46Q233 -10 172 -10Q117 -10 75 30T33 157Q33 205 53 255T101 341Q148 398 195 420T280 442Q336 442 364 400Q369 394 369 396Q370 400 396 505T424 616Q424 629 417 632T378 637H357Q351 643 351 645T353 664Q358 683 366 683ZM352 326Q329 405 277 405Q242 405 210 374T160 293Q131 214 119 129Q119 126 119 118T118 106Q118 61 136 44T179 26Q233 26 290 98L298 109L352 326Z">
+                                        </path>
+                                    </defs>
+                                    <g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)">
+                                        <use xlink:href="#E15-MJMATHI-64" x="0" y="0"></use>
+                                    </g>
+                                </svg></span>
+                            <script type="math/tex">d</script><span>和</span><span class="MathJax_SVG" tabindex="-1"
+                                style="font-size: 100%; display: inline-block;"><svg xmlns:xlink="http://www.w3.org/1999/xlink"
+                                    width="2.376ex" height="1.994ex" viewBox="0 -755.9 1023 858.4" role="img" focusable="false"
+                                    style="vertical-align: -0.238ex;">
+                                    <defs>
+                                        <path stroke-width="0" id="E17-MJMAIN-32"
+                                            d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z">
+                                        </path>
+                                        <path stroke-width="0" id="E17-MJMATHI-64"
+                                            d="M366 683Q367 683 438 688T511 694Q523 694 523 686Q523 679 450 384T375 83T374 68Q374 26 402 26Q411 27 422 35Q443 55 463 131Q469 151 473 152Q475 153 483 153H487H491Q506 153 506 145Q506 140 503 129Q490 79 473 48T445 8T417 -8Q409 -10 393 -10Q359 -10 336 5T306 36L300 51Q299 52 296 50Q294 48 292 46Q233 -10 172 -10Q117 -10 75 30T33 157Q33 205 53 255T101 341Q148 398 195 420T280 442Q336 442 364 400Q369 394 369 396Q370 400 396 505T424 616Q424 629 417 632T378 637H357Q351 643 351 645T353 664Q358 683 366 683ZM352 326Q329 405 277 405Q242 405 210 374T160 293Q131 214 119 129Q119 126 119 118T118 106Q118 61 136 44T179 26Q233 26 290 98L298 109L352 326Z">
+                                        </path>
+                                    </defs>
+                                    <g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)">
+                                        <use xlink:href="#E17-MJMAIN-32" x="0" y="0"></use>
+                                        <use xlink:href="#E17-MJMATHI-64" x="500" y="0"></use>
+                                    </g>
+                                </svg></span>
+                            <script type="math/tex">2d</script><span>之间变化。网格中部的节点拥有完全的度，而位于角上的节点具有最小的度数。对于d维k元环来说，每个节点度数都是</span><span
+                                class="MathJax_SVG" tabindex="-1" style="font-size: 100%; display: inline-block;"><svg
+                                    xmlns:xlink="http://www.w3.org/1999/xlink" width="2.376ex" height="1.994ex"
+                                    viewBox="0 -755.9 1023 858.4" role="img" focusable="false" style="vertical-align: -0.238ex;">
+                                    <defs>
+                                        <path stroke-width="0" id="E17-MJMAIN-32"
+                                            d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z">
+                                        </path>
+                                        <path stroke-width="0" id="E17-MJMATHI-64"
+                                            d="M366 683Q367 683 438 688T511 694Q523 694 523 686Q523 679 450 384T375 83T374 68Q374 26 402 26Q411 27 422 35Q443 55 463 131Q469 151 473 152Q475 153 483 153H487H491Q506 153 506 145Q506 140 503 129Q490 79 473 48T445 8T417 -8Q409 -10 393 -10Q359 -10 336 5T306 36L300 51Q299 52 296 50Q294 48 292 46Q233 -10 172 -10Q117 -10 75 30T33 157Q33 205 53 255T101 341Q148 398 195 420T280 442Q336 442 364 400Q369 394 369 396Q370 400 396 505T424 616Q424 629 417 632T378 637H357Q351 643 351 645T353 664Q358 683 366 683ZM352 326Q329 405 277 405Q242 405 210 374T160 293Q131 214 119 129Q119 126 119 118T118 106Q118 61 136 44T179 26Q233 26 290 98L298 109L352 326Z">
+                                        </path>
+                                    </defs>
+                                    <g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)">
+                                        <use xlink:href="#E17-MJMAIN-32" x="0" y="0"></use>
+                                        <use xlink:href="#E17-MJMATHI-64" x="500" y="0"></use>
+                                    </g>
+                                </svg></span>
+                            <script type="math/tex">2d</script><span>。</span></p>
+                        <h3><a name="树" class="md-header-anchor"></a><span>树</span></h3>
+                        <p><img src="D:\Xincheng's Files\notes\parallel\pics\13.png" referrerpolicy="no-referrer" alt="tree"></p>
+                        <p><span>节点度为3，对剖宽度为1，直径为</span><span class="MathJax_SVG" tabindex="-1"
+                                style="font-size: 100%; display: inline-block;"><svg xmlns:xlink="http://www.w3.org/1999/xlink"
+                                    width="6.966ex" height="2.461ex" viewBox="0 -755.9 2999.3 1059.4" role="img" focusable="false"
+                                    style="vertical-align: -0.705ex;">
+                                    <defs>
+                                        <path stroke-width="0" id="E18-MJMAIN-32"
+                                            d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z">
+                                        </path>
+                                        <path stroke-width="0" id="E18-MJMAIN-6C"
+                                            d="M42 46H56Q95 46 103 60V68Q103 77 103 91T103 124T104 167T104 217T104 272T104 329Q104 366 104 407T104 482T104 542T103 586T103 603Q100 622 89 628T44 637H26V660Q26 683 28 683L38 684Q48 685 67 686T104 688Q121 689 141 690T171 693T182 694H185V379Q185 62 186 60Q190 52 198 49Q219 46 247 46H263V0H255L232 1Q209 2 183 2T145 3T107 3T57 1L34 0H26V46H42Z">
+                                        </path>
+                                        <path stroke-width="0" id="E18-MJMAIN-6F"
+                                            d="M28 214Q28 309 93 378T250 448Q340 448 405 380T471 215Q471 120 407 55T250 -10Q153 -10 91 57T28 214ZM250 30Q372 30 372 193V225V250Q372 272 371 288T364 326T348 362T317 390T268 410Q263 411 252 411Q222 411 195 399Q152 377 139 338T126 246V226Q126 130 145 91Q177 30 250 30Z">
+                                        </path>
+                                        <path stroke-width="0" id="E18-MJMAIN-67"
+                                            d="M329 409Q373 453 429 453Q459 453 472 434T485 396Q485 382 476 371T449 360Q416 360 412 390Q410 404 415 411Q415 412 416 414V415Q388 412 363 393Q355 388 355 386Q355 385 359 381T368 369T379 351T388 325T392 292Q392 230 343 187T222 143Q172 143 123 171Q112 153 112 133Q112 98 138 81Q147 75 155 75T227 73Q311 72 335 67Q396 58 431 26Q470 -13 470 -72Q470 -139 392 -175Q332 -206 250 -206Q167 -206 107 -175Q29 -140 29 -75Q29 -39 50 -15T92 18L103 24Q67 55 67 108Q67 155 96 193Q52 237 52 292Q52 355 102 398T223 442Q274 442 318 416L329 409ZM299 343Q294 371 273 387T221 404Q192 404 171 388T145 343Q142 326 142 292Q142 248 149 227T179 192Q196 182 222 182Q244 182 260 189T283 207T294 227T299 242Q302 258 302 292T299 343ZM403 -75Q403 -50 389 -34T348 -11T299 -2T245 0H218Q151 0 138 -6Q118 -15 107 -34T95 -74Q95 -84 101 -97T122 -127T170 -155T250 -167Q319 -167 361 -139T403 -75Z">
+                                        </path>
+                                        <path stroke-width="0" id="E18-MJMATHI-4E"
+                                            d="M234 637Q231 637 226 637Q201 637 196 638T191 649Q191 676 202 682Q204 683 299 683Q376 683 387 683T401 677Q612 181 616 168L670 381Q723 592 723 606Q723 633 659 637Q635 637 635 648Q635 650 637 660Q641 676 643 679T653 683Q656 683 684 682T767 680Q817 680 843 681T873 682Q888 682 888 672Q888 650 880 642Q878 637 858 637Q787 633 769 597L620 7Q618 0 599 0Q585 0 582 2Q579 5 453 305L326 604L261 344Q196 88 196 79Q201 46 268 46H278Q284 41 284 38T282 19Q278 6 272 0H259Q228 2 151 2Q123 2 100 2T63 2T46 1Q31 1 31 10Q31 14 34 26T39 40Q41 46 62 46Q130 49 150 85Q154 91 221 362L289 634Q287 635 234 637Z">
+                                        </path>
+                                    </defs>
+                                    <g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)">
+                                        <use xlink:href="#E18-MJMAIN-32" x="0" y="0"></use>
+                                        <g transform="translate(666,0)">
+                                            <use xlink:href="#E18-MJMAIN-6C"></use>
+                                            <use xlink:href="#E18-MJMAIN-6F" x="278" y="0"></use>
+                                            <use xlink:href="#E18-MJMAIN-67" x="778" y="0"></use>
+                                        </g>
+                                        <use xlink:href="#E18-MJMATHI-4E" x="2111" y="0"></use>
+                                    </g>
+                                </svg></span>
+                            <script type="math/tex">2\log N</script><span>。节点可以用二进制表示，节点A到节点B的路径可以看为：先找到公共节点</span><span
+                                class="MathJax_SVG" tabindex="-1" style="font-size: 100%; display: inline-block;"><svg
+                                    xmlns:xlink="http://www.w3.org/1999/xlink" width="11.204ex" height="2.227ex"
+                                    viewBox="0 -806.1 4824 958.9" role="img" focusable="false" style="vertical-align: -0.355ex;">
+                                    <defs>
+                                        <path stroke-width="0" id="E19-MJMATHI-52"
+                                            d="M230 637Q203 637 198 638T193 649Q193 676 204 682Q206 683 378 683Q550 682 564 680Q620 672 658 652T712 606T733 563T739 529Q739 484 710 445T643 385T576 351T538 338L545 333Q612 295 612 223Q612 212 607 162T602 80V71Q602 53 603 43T614 25T640 16Q668 16 686 38T712 85Q717 99 720 102T735 105Q755 105 755 93Q755 75 731 36Q693 -21 641 -21H632Q571 -21 531 4T487 82Q487 109 502 166T517 239Q517 290 474 313Q459 320 449 321T378 323H309L277 193Q244 61 244 59Q244 55 245 54T252 50T269 48T302 46H333Q339 38 339 37T336 19Q332 6 326 0H311Q275 2 180 2Q146 2 117 2T71 2T50 1Q33 1 33 10Q33 12 36 24Q41 43 46 45Q50 46 61 46H67Q94 46 127 49Q141 52 146 61Q149 65 218 339T287 628Q287 635 230 637ZM630 554Q630 586 609 608T523 636Q521 636 500 636T462 637H440Q393 637 386 627Q385 624 352 494T319 361Q319 360 388 360Q466 361 492 367Q556 377 592 426Q608 449 619 486T630 554Z">
+                                        </path>
+                                        <path stroke-width="0" id="E19-MJMAIN-3D"
+                                            d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z">
+                                        </path>
+                                        <path stroke-width="0" id="E19-MJMATHI-41"
+                                            d="M208 74Q208 50 254 46Q272 46 272 35Q272 34 270 22Q267 8 264 4T251 0Q249 0 239 0T205 1T141 2Q70 2 50 0H42Q35 7 35 11Q37 38 48 46H62Q132 49 164 96Q170 102 345 401T523 704Q530 716 547 716H555H572Q578 707 578 706L606 383Q634 60 636 57Q641 46 701 46Q726 46 726 36Q726 34 723 22Q720 7 718 4T704 0Q701 0 690 0T651 1T578 2Q484 2 455 0H443Q437 6 437 9T439 27Q443 40 445 43L449 46H469Q523 49 533 63L521 213H283L249 155Q208 86 208 74ZM516 260Q516 271 504 416T490 562L463 519Q447 492 400 412L310 260L413 259Q516 259 516 260Z">
+                                        </path>
+                                        <path stroke-width="0" id="E19-MJMAIN-2295"
+                                            d="M56 250Q56 394 156 488T384 583Q530 583 626 485T722 250Q722 110 625 14T390 -83Q249 -83 153 14T56 250ZM364 542Q308 539 251 509T148 418T96 278V270H369V542H364ZM681 278Q675 338 650 386T592 462T522 509T458 535T412 542H409V270H681V278ZM96 222Q104 150 139 95T219 12T302 -29T366 -42H369V230H96V222ZM681 222V230H409V-42H412Q429 -42 456 -36T521 -10T590 37T649 113T681 222Z">
+                                        </path>
+                                        <path stroke-width="0" id="E19-MJMATHI-42"
+                                            d="M231 637Q204 637 199 638T194 649Q194 676 205 682Q206 683 335 683Q594 683 608 681Q671 671 713 636T756 544Q756 480 698 429T565 360L555 357Q619 348 660 311T702 219Q702 146 630 78T453 1Q446 0 242 0Q42 0 39 2Q35 5 35 10Q35 17 37 24Q42 43 47 45Q51 46 62 46H68Q95 46 128 49Q142 52 147 61Q150 65 219 339T288 628Q288 635 231 637ZM649 544Q649 574 634 600T585 634Q578 636 493 637Q473 637 451 637T416 636H403Q388 635 384 626Q382 622 352 506Q352 503 351 500L320 374H401Q482 374 494 376Q554 386 601 434T649 544ZM595 229Q595 273 572 302T512 336Q506 337 429 337Q311 337 310 336Q310 334 293 263T258 122L240 52Q240 48 252 48T333 46Q422 46 429 47Q491 54 543 105T595 229Z">
+                                        </path>
+                                    </defs>
+                                    <g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)">
+                                        <use xlink:href="#E19-MJMATHI-52" x="0" y="0"></use>
+                                        <use xlink:href="#E19-MJMAIN-3D" x="1036" y="0"></use>
+                                        <use xlink:href="#E19-MJMATHI-41" x="2092" y="0"></use>
+                                        <use xlink:href="#E19-MJMAIN-2295" x="3064" y="0"></use>
+                                        <use xlink:href="#E19-MJMATHI-42" x="4065" y="0"></use>
+                                    </g>
+                                </svg></span>
+                            <script type="math/tex">R=A\oplus B</script><span>(即按位异或)</span></p>
+                        <h3><a name="超立方" class="md-header-anchor"></a><span>超立方</span></h3>
+                        <p><span>n-立方由</span><span class="MathJax_SVG" tabindex="-1"
+                                style="font-size: 100%; display: inline-block;"><svg xmlns:xlink="http://www.w3.org/1999/xlink"
+                                    width="2.379ex" height="1.994ex" viewBox="0 -806.1 1024.3 858.4" role="img" focusable="false"
+                                    style="vertical-align: -0.121ex;">
+                                    <defs>
+                                        <path stroke-width="0" id="E23-MJMAIN-32"
+                                            d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z">
+                                        </path>
+                                        <path stroke-width="0" id="E23-MJMATHI-6E"
+                                            d="M21 287Q22 293 24 303T36 341T56 388T89 425T135 442Q171 442 195 424T225 390T231 369Q231 367 232 367L243 378Q304 442 382 442Q436 442 469 415T503 336T465 179T427 52Q427 26 444 26Q450 26 453 27Q482 32 505 65T540 145Q542 153 560 153Q580 153 580 145Q580 144 576 130Q568 101 554 73T508 17T439 -10Q392 -10 371 17T350 73Q350 92 386 193T423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 180T152 343Q153 348 153 366Q153 405 129 405Q91 405 66 305Q60 285 60 284Q58 278 41 278H27Q21 284 21 287Z">
+                                        </path>
+                                    </defs>
+                                    <g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)">
+                                        <use xlink:href="#E23-MJMAIN-32" x="0" y="0"></use>
+                                        <use transform="scale(0.707)" xlink:href="#E23-MJMATHI-6E" x="707" y="555"></use>
+                                    </g>
+                                </svg></span>
+                            <script type="math/tex">2^n</script><span>个顶点组成，度为</span><span class="MathJax_SVG" tabindex="-1"
+                                style="font-size: 100%; display: inline-block;"><svg xmlns:xlink="http://www.w3.org/1999/xlink"
+                                    width="1.394ex" height="1.41ex" viewBox="0 -504.6 600 607.1" role="img" focusable="false"
+                                    style="vertical-align: -0.238ex;">
+                                    <defs>
+                                        <path stroke-width="0" id="E5-MJMATHI-6E"
+                                            d="M21 287Q22 293 24 303T36 341T56 388T89 425T135 442Q171 442 195 424T225 390T231 369Q231 367 232 367L243 378Q304 442 382 442Q436 442 469 415T503 336T465 179T427 52Q427 26 444 26Q450 26 453 27Q482 32 505 65T540 145Q542 153 560 153Q580 153 580 145Q580 144 576 130Q568 101 554 73T508 17T439 -10Q392 -10 371 17T350 73Q350 92 386 193T423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 180T152 343Q153 348 153 366Q153 405 129 405Q91 405 66 305Q60 285 60 284Q58 278 41 278H27Q21 284 21 287Z">
+                                        </path>
+                                    </defs>
+                                    <g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)">
+                                        <use xlink:href="#E5-MJMATHI-6E" x="0" y="0"></use>
+                                    </g>
+                                </svg></span>
+                            <script type="math/tex">n</script><span>，直径为</span><span class="MathJax_SVG" tabindex="-1"
+                                style="font-size: 100%; display: inline-block;"><svg xmlns:xlink="http://www.w3.org/1999/xlink"
+                                    width="1.394ex" height="1.41ex" viewBox="0 -504.6 600 607.1" role="img" focusable="false"
+                                    style="vertical-align: -0.238ex;">
+                                    <defs>
+                                        <path stroke-width="0" id="E5-MJMATHI-6E"
+                                            d="M21 287Q22 293 24 303T36 341T56 388T89 425T135 442Q171 442 195 424T225 390T231 369Q231 367 232 367L243 378Q304 442 382 442Q436 442 469 415T503 336T465 179T427 52Q427 26 444 26Q450 26 453 27Q482 32 505 65T540 145Q542 153 560 153Q580 153 580 145Q580 144 576 130Q568 101 554 73T508 17T439 -10Q392 -10 371 17T350 73Q350 92 386 193T423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 180T152 343Q153 348 153 366Q153 405 129 405Q91 405 66 305Q60 285 60 284Q58 278 41 278H27Q21 284 21 287Z">
+                                        </path>
+                                    </defs>
+                                    <g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)">
+                                        <use xlink:href="#E5-MJMATHI-6E" x="0" y="0"></use>
+                                    </g>
+                                </svg></span>
+                            <script type="math/tex">n</script><span>，对剖宽度</span><span class="MathJax_SVG" tabindex="-1"
+                                style="font-size: 100%; display: inline-block;"><svg xmlns:xlink="http://www.w3.org/1999/xlink"
+                                    width="4.385ex" height="2.577ex" viewBox="0 -806.1 1888 1109.7" role="img" focusable="false"
+                                    style="vertical-align: -0.705ex;">
+                                    <defs>
+                                        <path stroke-width="0" id="E13-MJMATHI-4E"
+                                            d="M234 637Q231 637 226 637Q201 637 196 638T191 649Q191 676 202 682Q204 683 299 683Q376 683 387 683T401 677Q612 181 616 168L670 381Q723 592 723 606Q723 633 659 637Q635 637 635 648Q635 650 637 660Q641 676 643 679T653 683Q656 683 684 682T767 680Q817 680 843 681T873 682Q888 682 888 672Q888 650 880 642Q878 637 858 637Q787 633 769 597L620 7Q618 0 599 0Q585 0 582 2Q579 5 453 305L326 604L261 344Q196 88 196 79Q201 46 268 46H278Q284 41 284 38T282 19Q278 6 272 0H259Q228 2 151 2Q123 2 100 2T63 2T46 1Q31 1 31 10Q31 14 34 26T39 40Q41 46 62 46Q130 49 150 85Q154 91 221 362L289 634Q287 635 234 637Z">
+                                        </path>
+                                        <path stroke-width="0" id="E13-MJMAIN-2F"
+                                            d="M423 750Q432 750 438 744T444 730Q444 725 271 248T92 -240Q85 -250 75 -250Q68 -250 62 -245T56 -231Q56 -221 230 257T407 740Q411 750 423 750Z">
+                                        </path>
+                                        <path stroke-width="0" id="E13-MJMAIN-32"
+                                            d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z">
+                                        </path>
+                                    </defs>
+                                    <g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)">
+                                        <use xlink:href="#E13-MJMATHI-4E" x="0" y="0"></use>
+                                        <use xlink:href="#E13-MJMAIN-2F" x="888" y="0"></use>
+                                        <use xlink:href="#E13-MJMAIN-32" x="1388" y="0"></use>
+                                    </g>
+                                </svg></span>
+                            <script type="math/tex">N/2</script><span>。</span></p>
+                        <h3><a name="小结" class="md-header-anchor"></a><span>小结</span></h3>
+                        <p><img src="D:\Xincheng's Files\notes\parallel\pics\14.png" referrerpolicy="no-referrer" alt="summary-static">
+                        </p>
+                        <h2><a name="动态互连网络" class="md-header-anchor"></a><span>动态互连网络</span></h2>
+                        <h3><a name="总线" class="md-header-anchor"></a><span>总线</span></h3>
+                        <p><img src="D:\Xincheng's Files\notes\parallel\pics\15.png" referrerpolicy="no-referrer" alt="bus"></p>
+                        <h3><a name="交叉开关" class="md-header-anchor"></a><span>交叉开关</span></h3>
+                        <p><img src="D:\Xincheng's Files\notes\parallel\pics\16.png" referrerpolicy="no-referrer" alt="switch"></p>
+                        <h3><a name="多级互连网络min" class="md-header-anchor"></a><span>多级互连网络(MIN)</span></h3>
+                        <p><img src="D:\Xincheng's Files\notes\parallel\pics\17.png" referrerpolicy="no-referrer" alt="MIN"></p>
+                        <p><span>常见网络有蝶式网络、</span>&Omega;<span>网络等。</span></p>
+                        <h3><a name="小结-n37" class="md-header-anchor"></a><span>小结</span></h3>
+                        <p><img src="D:\Xincheng's Files\notes\parallel\pics\18.png" referrerpolicy="no-referrer" alt="dynamic"></p>
+                        <h2><a name="选路方法和开关技术" class="md-header-anchor"></a><span>选路方法和开关技术</span></h2>
+                        <h3><a name="x-y选路法" class="md-header-anchor"></a><span>X-Y选路法</span></h3>
+                        <p><span>二维网孔在选路中，首先沿x维方向确定路径，然后再沿y维方向确定路径。</span></p>
+                        <pre spellcheck="false" class="md-fences md-end-block ty-contain-cm modeLoaded"
+                            lang=""><div class="CodeMirror cm-s-inner CodeMirror-wrap" lang=""><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 0px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre>
+                    </div>
+                    <div class="CodeMirror-measure"></div>
+                    <div style="position: relative; z-index: 1;"></div>
+                    <div class="CodeMirror-code" role="presentation">
+                        <div class="CodeMirror-activeline" style="position: relative;">
+                            <div class="CodeMirror-activeline-background CodeMirror-linebackground"></div>
+                            <div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div>
+                            <pre class=" CodeMirror-line "
+                                role="presentation"><span role="presentation" style="padding-right: 0.1px;">(1) 沿x维将信包向左或向右选路至目的处理器所在的列</span></pre>
+                        </div>
+                        <pre class=" CodeMirror-line "
+                            role="presentation"><span role="presentation" style="padding-right: 0.1px;">(2) 沿y维将信包向上或向下选路至目的处理器所在的行</span></pre>
+                    </div>
+                    </div>
+                    </div>
+                    </div>
+                    </div>
+                    <div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 45px;"></div>
+                    <div class="CodeMirror-gutters" style="display: none; height: 45px;"></div>
+                    </div>
+                    </div>
+                    </pre>
+                    <h3><a name="e-立方选路法" class="md-header-anchor"></a><span>E-立方选路法</span></h3>
+                    <p><span>设节点用二进制编码，源节点和目的节点的编码分别为s和d，下标表示第几位，v表示中间节点编码。</span></p>
+                    <pre spellcheck="false" class="md-fences md-end-block ty-contain-cm modeLoaded"
+                        lang=""><div class="CodeMirror cm-s-inner CodeMirror-wrap" lang=""><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 0px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre>
+                    </div>
+                    <div class="CodeMirror-measure"></div>
+                    <div style="position: relative; z-index: 1;"></div>
+                    <div class="CodeMirror-code" role="presentation" style="">
+                        <div class="CodeMirror-activeline" style="position: relative;">
+                            <div class="CodeMirror-activeline-background CodeMirror-linebackground"></div>
+                            <div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div>
+                            <pre class=" CodeMirror-line "
+                                role="presentation"><span role="presentation" style="padding-right: 0.1px;">(1) for i=0~n-1</span></pre>
+                        </div>
+                        <pre class=" CodeMirror-line "
+                            role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span>ri = si xor di</span></pre>
+                        <pre class=" CodeMirror-line "
+                            role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span>endfor</span></pre>
+                        <pre class=" CodeMirror-line "
+                            role="presentation"><span role="presentation" style="padding-right: 0.1px;">(2) i = 1, v = s</span></pre>
+                        <pre class=" CodeMirror-line "
+                            role="presentation"><span role="presentation" style="padding-right: 0.1px;">(3) while i &lt; n</span></pre>
+                        <pre class=" CodeMirror-line "
+                            role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span>if ri == 1</span></pre>
+                        <pre class=" CodeMirror-line "
+                            role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span>v = v xor (2^i)</span></pre>
+                        <pre class=" CodeMirror-line "
+                            role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span>endif</span></pre>
+                        <pre class=" CodeMirror-line "
+                            role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span>i++</span></pre>
+                        <pre class=" CodeMirror-line "
+                            role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span>endwhile</span></pre>
+                    </div>
+                    </div>
+                    </div>
+                    </div>
+                    </div>
+                    <div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 224px;"></div>
+                    <div class="CodeMirror-gutters" style="display: none; height: 224px;"></div>
+                    </div>
+                    </div>
+                    </pre>
+                    <h3><a name="存储转发sf选路和切通ct选路" class="md-header-anchor"></a><span>存储转发(SF)选路和切通(CT)选路</span></h3>
+                    <p><span>存储转发在传输过程中，中间节点必须将数据片收齐在缓冲器后，再继续转发；切通选路在传输过程中，直接把数据片进行转发。</span></p>
+                    <p><img src="D:\Xincheng's Files\notes\parallel\pics\19.png" referrerpolicy="no-referrer" alt="SF-CT"></p>
+                    <h2><a name="死锁避免" class="md-header-anchor"></a><span>死锁避免</span></h2>
+                    <h3><a name="死锁产生" class="md-header-anchor"></a><span>死锁产生</span></h3>
+                    <p><span>死锁可分为无限延期(信包等待一个可能出现但永不会发生的事件，主要是公平性问题)，和活锁(信包在网络中传输却无法达到目的地)。</span></p>
+                    <p><span>迎面死锁：当两个节点之间，它们都试图向对方发送信包，且在收到对方发出信包之前就进行发送。</span></p>
+                    <p><span>选路死锁：网络中多个消息竞争系统资源时就可能会发生。</span></p>
+                    <h3><a name="避免死锁" class="md-header-anchor"></a><span>避免死锁</span></h3>
+                    <p><span>基本技术是要求通道相关图上不出现圈。简单的算法是为每个通道资源分配一个数字(资源号)，在进行分配时，按照通道资源号递增或递减的顺序进行分配。</span></p>
+                    <ol start=''>
+                        <li><span>虚拟通道：给每个物理通道提供多个缓冲区，并将缓冲区劈开，组成一组虚拟通道。</span></li>
+                        <li><span>转弯选路：禁止可能的转弯。</span></li>
+                    </ol>
+                    </div>
+                </div> <!-- <div id="layout-content"> -->
+                <div id="footer-container">
+                    <div id="footer">
+                        <div id="footer-text">
+                            Last edited on 2020-07-18 by Xincheng Xie.
+                        </div> <!-- <div id="footer-text"> -->
+                    </div> <!-- <div id="footer"> -->
+                </div> <!-- <div id="footer-container"> -->
+            </div> <!-- <div id="layout-content-container"> -->
+        </div>
+        <!--- <div id="layout"> --->
+    </div>
+    <!--- <div id="main-container"> --->
+    <script>
+        function openNav() {
+            if (window.innerWidth <= 1200) {
+                document.getElementById("layout-menu").style.width = "280px";
+                document.getElementById("layout-content-container").style.marginLeft = "280.8px";
+                document.getElementById("layout-content-container").style.position = "fixed";
+            }
+        }
+        function closeNav() {
+            if (window.innerWidth <= 1200) {
+                document.getElementById("layout-menu").style.width = "0";
+                document.getElementById("layout-content-container").style.position = "static";
+                document.getElementById("layout-content-container").style.marginLeft = "0px";
+                setInterval(
+                    function () { location.reload() },
+                    500
+                );
+            }
+        }
+    </script>
+</body>
+
+</html>
