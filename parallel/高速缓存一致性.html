@@ -116,23 +116,23 @@
                         <h2><a name="总线侦听协议snooping" class="md-header-anchor"></a><span>总线侦听协议(snooping)</span></h2>
                         <p><span>共享存储机器，如SMP常采用基于总线侦听的一致性协议。</span></p>
                         <h3><a name="二态写直达无效协议" class="md-header-anchor"></a><span>二态写直达无效协议</span></h3>
-                        <p><img src="pics\6.png" alt="finite-state-1" style="zoom: 67%;" /></p>
+                        <p><img src="pics/6.png" alt="finite-state-1" style="zoom: 67%;" /></p>
                         <p><span>写直达策略中，所有写操作都出现在总线上，但由于同时只能有一个总线事务出现在总线上，因此在任意执行中所有对同一位置的写操作都按照它们出现在总线上的次序——总线序被全局串行化；读缺失与写操作一起被总线序全局串行化；读命中获得的值是同一处理器最新修改的值，或者同一处理器中最近一次读缺失获得的值，因此也按照全局总线序来获得值。因此，符合高速缓存一次性要求。</span>
                         </p>
                         <p><span>事实上，不仅同一位置的读/写被总线序串行化，对所有位置的读/写都被总线序串行化了。</span></p>
                         <h3><a name="三态写回无效msi协议" class="md-header-anchor"></a><span>三态写回无效(MSI)协议</span></h3>
-                        <p><img src="pics\7.png" alt="infi-state-2" style="zoom: 50%;" /></p>
+                        <p><img src="pics/7.png" alt="infi-state-2" style="zoom: 50%;" /></p>
                         <p><span>有无效(I)、共享(S)和修改(M)状态。无效指该高速缓存中是无效的或还没进入；共享指该高速缓存是未被修改过的，包括主存；修改指只有该高速缓存有该块的最新拷贝。</span></p>
                         <p><span>高速缓存被替换时，若被替换出去的块处于M状态，则将其内容写回主存。</span></p>
                         <p><span>总线操作有总线读、总线互斥读、总线写回、刷新(Flush)。总线互斥读是为了获取准备修改的互斥拷贝，所有其他高速缓存应被置为无效。刷新是为了从高速缓存取值到总线，而不是从内存取值到总线。</span>
                         </p>
                         <h3><a name="四态写回无效mesi协议" class="md-header-anchor"></a><span>四态写回无效(MESI)协议</span></h3>
-                        <p><img src="pics\8.png" alt="finite-state-3" style="zoom: 67%;" /></p>
+                        <p><img src="pics/8.png" alt="finite-state-3" style="zoom: 67%;" /></p>
                         <p><span>与MSI协议相比，增加互斥(E)状态，原因是，若采用MSI协议，当一个顺序程序先读入一个数据项(BusRd)，然后修改一个数据项(BusRdX)时，数据项不存在共享者，即不需要先转换成S再变成M，BusRdX总线事务是不需要的。E状态表示只有一个高速缓存有这个内存块，且该块内容没有被修改过。这样只要发出BusRd就能得到内存块并置为E，就可以直接修改。</span>
                         </p>
                         <p><span>在产生BusRd事务并装入内存块时，高速缓存控制器需要知道别的高速缓存中是否存在该块的拷贝。因此需要总线提供一个额外的共享(S)信号线。</span></p>
                         <h3><a name="四态写回更新dragon协议" class="md-header-anchor"></a><span>四态写回更新(Dragon)协议</span></h3>
-                        <p><img src="pics\9.png" referrerpolicy="no-referrer" alt="finite-state-4">
+                        <p><img src="pics/9.png" referrerpolicy="no-referrer" alt="finite-state-4">
                         </p>
                         <p><span>有四种状态：</span></p>
                         <ul>
@@ -223,7 +223,7 @@
                         <p><span>不同类型的目录协议可分为：全映射目录、有限目录和链式目录。</span></p>
                         <p><span>全映射目录存放与全局存储器中每个块有关的数据，这样系统中每个高速缓存可以同时存储任何数据块的拷贝（每个目录项包含N个指针，N是系统中处理器的数目）；有限目录与全局映射目录的不同之处是每个目录项含有固定数目的指针（指针替换过程称为驱逐）；链式目录将目录分布到各个高速缓存（单链法和双链法）。</span>
                         </p>
-                        <p><img src="pics\10.png" referrerpolicy="no-referrer" alt="directory"></p>
+                        <p><img src="pics/10.png" referrerpolicy="no-referrer" alt="directory"></p>
                         <p><span>在高速缓存中，每一行都有无效、共享和独占三种状态。</span></p>
                         <p><span>在存储器中，每一行都有一相应的目录项，每一目录项都有一N位的位向量，其中N是系统中处理器个数。若位向量中第i位为1，则表示此存储行在第i个处理器Pi中有备份。此外，每一目录有一改写位，当改写位为1时，表示处理器独占并已改写此行，相应的存储行处于脏状态；否则处于干净状态。</span>
                         </p>
