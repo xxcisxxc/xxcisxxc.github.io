@@ -1,0 +1,260 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <link rel="icon" href="../images/icon.png">
+    <link rel="stylesheet" href="../typora.css" type="text/css" />
+    <link rel="stylesheet" href="../main.css" type="text/css" />
+    <link rel="stylesheet" href="../font-awesome/css/font-awesome.min.css">
+    <link href='https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext'
+        rel='stylesheet' type='text/css' />
+    <!--- <title></title> --->
+    <title>互连网络-性能分析</title>
+</head>
+
+<body>
+    <div id="main-container">
+        <div id="header-container">
+            <div id="header">
+                <div id="header-icon-text-container">
+                    <div id="header-icon-container">
+                        <a href="../index.html"><img src="../images/icon.png" alt=""
+                                style="width: 100%; height: 100%; position: center; padding:0px; margin: 0px;"></a>
+                    </div>
+                    <div id="header-text-container">
+                        <a href="../index.html">Xincheng's Homepage</a>
+                    </div>
+                </div>
+                <div id="main">
+                    <button class="openbtn" onclick="openNav()">☰</button>
+                </div>
+            </div>
+        </div>
+        <div id="layout">
+            <div id="layout-menu-container">
+                <div id="layout-menu">
+                    <div class="menu-item"><a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+                    </div>
+                    <div class="menu-item"><a href="../index.html">About</a></div>
+                    <div class="menu-category">并行计算</div>
+                    <div class="menu-item"><a href="并行计算机结构模型.html">并行计算机结构模型</a></div>
+                    <div class="menu-item"><a href="并行程序设计.html">并行程序设计</a></div>
+                    <div class="menu-item"><a href="并行计算机性能测评.html">并行计算机性能测评</a></div>
+                    <div class="menu-item"><a href="高速缓存一致性.html">高速缓存一致性</a></div>
+                    <div class="menu-item"><a href="互连网络.html">互连网络</a></div>
+                    <div class="menu-item"><a href="互连网络-一个简单的互连网络.html">互连网络-一个简单的互连网络</a></div>
+                    <div class="menu-item"><a href="互连网络-网络拓扑结构.html">互连网络-网络拓扑结构</a></div>
+                    <div class="menu-item"><a href="互连网络-网络路由算法.html">互连网络-网络路由算法</a></div>
+                    <div class="menu-item"><a href="互连网络-流量控制.html">互连网络-流量控制</a></div>
+                    <div class="menu-item"><a href="互连网络-服务质量.html">互连网络-服务质量</a></div>
+                    <div class="menu-item"><a href="互连网络-路由器架构.html">互连网络-路由器架构</a></div>
+                    <div class="menu-item"><a href="互连网络-性能分析.html" class="current">互连网络-性能分析</a></div>
+                </div> <!-- <div id="layout-menu"> -->
+            </div> <!-- <div id="layout-menu-container"> -->
+            <div id="layout-content-container">
+                <div id="layout-content">
+                    <div id='write' class='is-node'>
+                        <h1><a name="互连网络-性能分析" class="md-header-anchor"></a><span>互连网络-性能分析</span></h1>
+                        <div class='md-toc' mdtype='toc'>
+                            <p class="md-toc-content" role="list"><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n0"><a
+                                        class="md-toc-inner" href="#互连网络-性能分析">互连网络-性能分析</a></span><span role="listitem"
+                                    class="md-toc-item md-toc-h2" data-ref="n3"><a class="md-toc-inner"
+                                        href="#性能的度量">性能的度量</a></span><span role="listitem" class="md-toc-item md-toc-h3"
+                                    data-ref="n13"><a class="md-toc-inner" href="#一般度量时的错误">一般度量时的错误</a></span><span role="listitem"
+                                    class="md-toc-item md-toc-h2" data-ref="n25"><a class="md-toc-inner" href="#仿真">仿真</a></span><span
+                                    role="listitem" class="md-toc-item md-toc-h3" data-ref="n26"><a class="md-toc-inner"
+                                        href="#网络负载">网络负载</a></span><span role="listitem" class="md-toc-item md-toc-h3"
+                                    data-ref="n32"><a class="md-toc-inner" href="#仿真度量">仿真度量</a></span><span role="listitem"
+                                    class="md-toc-item md-toc-h3" data-ref="n40"><a class="md-toc-inner" href="#仿真器设计">仿真器设计</a></span>
+                            </p>
+                        </div>
+                        <h2><a name="性能的度量" class="md-header-anchor"></a><span>性能的度量</span></h2>
+                        <p><span>关注三个量：吞吐量、延迟和错误容忍率。</span></p>
+                        <p><img src="pics\109.png" alt="setup" style="zoom:80%;" /></p>
+                        <p><span>上面是开环(open-loop)测试构造，常用来评估特定的通信模式。闭环测试方法常常用来度量总体系统性能。</span></p>
+                        <p><span>一般更倾向于度量稳定状态的网络性能，通常有三步：热身(warm-up)，度量(measurement)，和流失(drain)。流失是为了让所有的测试包裹到达目的地。</span></p>
+                        <p><span>吞吐量通过计算一定时间内到达终点的包裹数。吞吐量是指接收的通信量，而需求是指提供的通信量，通常画需求-吞吐量图。当需求达到一定程度时，吞吐量会饱和。对于稳定网络，饱和后会保持；不稳定网络，饱和后会下降。</span>
+                        </p>
+                        <p><span>设提供通信为</span>&lambda;<sub><span>ij</span></sub><span>,
+                                接收通信为</span>&lambda;<span>&#39;</span><sub><span>ij</span></sub><span>，吞吐量定义为：</span></p>
+                        <div contenteditable="false" spellcheck="false" class="mathjax-block md-end-block md-math-block md-rawblock"
+                            id="mathjax-n10" cid="n10" mdtype="math_block">
+                            <div class="md-rawblock-container md-math-container" tabindex="-1">
+                                <div class="MathJax_SVG_Display"><span class="MathJax_SVG" id="MathJax-Element-246-Frame" tabindex="-1"
+                                        style="font-size: 100%; display: inline-block;"><svg xmlns:xlink="http://www.w3.org/1999/xlink"
+                                            width="112.412ex" height="10.398ex" viewBox="0 -1811.3 48399.6 4477.1" role="img"
+                                            focusable="false" style="vertical-align: -6.191ex; max-width: 100%;">
+                                            <defs>
+                                                <path stroke-width="0" id="E250-MJMAIN-398"
+                                                    d="M56 340Q56 423 86 494T164 610T270 680T388 705Q521 705 621 601T722 341Q722 260 693 191T617 75T510 4T388 -22T267 3T160 74T85 189T56 340ZM610 339Q610 428 590 495T535 598T463 651T384 668Q332 668 289 638T221 566Q168 485 168 339Q168 274 176 235Q189 158 228 105T324 28Q356 16 388 16Q415 16 442 24T501 54T555 111T594 205T610 339ZM223 263V422H263V388H514V422H554V263H514V297H263V263H223Z">
+                                                </path>
+                                                <path stroke-width="0" id="E250-MJMAIN-3D"
+                                                    d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z">
+                                                </path>
+                                                <path stroke-width="0" id="E250-MJMAIN-6D"
+                                                    d="M41 46H55Q94 46 102 60V68Q102 77 102 91T102 122T103 161T103 203Q103 234 103 269T102 328V351Q99 370 88 376T43 385H25V408Q25 431 27 431L37 432Q47 433 65 434T102 436Q119 437 138 438T167 441T178 442H181V402Q181 364 182 364T187 369T199 384T218 402T247 421T285 437Q305 442 336 442Q351 442 364 440T387 434T406 426T421 417T432 406T441 395T448 384T452 374T455 366L457 361L460 365Q463 369 466 373T475 384T488 397T503 410T523 422T546 432T572 439T603 442Q729 442 740 329Q741 322 741 190V104Q741 66 743 59T754 49Q775 46 803 46H819V0H811L788 1Q764 2 737 2T699 3Q596 3 587 0H579V46H595Q656 46 656 62Q657 64 657 200Q656 335 655 343Q649 371 635 385T611 402T585 404Q540 404 506 370Q479 343 472 315T464 232V168V108Q464 78 465 68T468 55T477 49Q498 46 526 46H542V0H534L510 1Q487 2 460 2T422 3Q319 3 310 0H302V46H318Q379 46 379 62Q380 64 380 200Q379 335 378 343Q372 371 358 385T334 402T308 404Q263 404 229 370Q202 343 195 315T187 232V168V108Q187 78 188 68T191 55T200 49Q221 46 249 46H265V0H257L234 1Q210 2 183 2T145 3Q42 3 33 0H25V46H41Z">
+                                                </path>
+                                                <path stroke-width="0" id="E250-MJMAIN-69"
+                                                    d="M69 609Q69 637 87 653T131 669Q154 667 171 652T188 609Q188 579 171 564T129 549Q104 549 87 564T69 609ZM247 0Q232 3 143 3Q132 3 106 3T56 1L34 0H26V46H42Q70 46 91 49Q100 53 102 60T104 102V205V293Q104 345 102 359T88 378Q74 385 41 385H30V408Q30 431 32 431L42 432Q52 433 70 434T106 436Q123 437 142 438T171 441T182 442H185V62Q190 52 197 50T232 46H255V0H247Z">
+                                                </path>
+                                                <path stroke-width="0" id="E250-MJMAIN-6E"
+                                                    d="M41 46H55Q94 46 102 60V68Q102 77 102 91T102 122T103 161T103 203Q103 234 103 269T102 328V351Q99 370 88 376T43 385H25V408Q25 431 27 431L37 432Q47 433 65 434T102 436Q119 437 138 438T167 441T178 442H181V402Q181 364 182 364T187 369T199 384T218 402T247 421T285 437Q305 442 336 442Q450 438 463 329Q464 322 464 190V104Q464 66 466 59T477 49Q498 46 526 46H542V0H534L510 1Q487 2 460 2T422 3Q319 3 310 0H302V46H318Q379 46 379 62Q380 64 380 200Q379 335 378 343Q372 371 358 385T334 402T308 404Q263 404 229 370Q202 343 195 315T187 232V168V108Q187 78 188 68T191 55T200 49Q221 46 249 46H265V0H257L234 1Q210 2 183 2T145 3Q42 3 33 0H25V46H41Z">
+                                                </path>
+                                                <path stroke-width="0" id="E250-MJMATHI-69"
+                                                    d="M184 600Q184 624 203 642T247 661Q265 661 277 649T290 619Q290 596 270 577T226 557Q211 557 198 567T184 600ZM21 287Q21 295 30 318T54 369T98 420T158 442Q197 442 223 419T250 357Q250 340 236 301T196 196T154 83Q149 61 149 51Q149 26 166 26Q175 26 185 29T208 43T235 78T260 137Q263 149 265 151T282 153Q302 153 302 143Q302 135 293 112T268 61T223 11T161 -11Q129 -11 102 10T74 74Q74 91 79 106T122 220Q160 321 166 341T173 380Q173 404 156 404H154Q124 404 99 371T61 287Q60 286 59 284T58 281T56 279T53 278T49 278T41 278H27Q21 284 21 287Z">
+                                                </path>
+                                                <path stroke-width="0" id="E250-MJMATHI-6A"
+                                                    d="M297 596Q297 627 318 644T361 661Q378 661 389 651T403 623Q403 595 384 576T340 557Q322 557 310 567T297 596ZM288 376Q288 405 262 405Q240 405 220 393T185 362T161 325T144 293L137 279Q135 278 121 278H107Q101 284 101 286T105 299Q126 348 164 391T252 441Q253 441 260 441T272 442Q296 441 316 432Q341 418 354 401T367 348V332L318 133Q267 -67 264 -75Q246 -125 194 -164T75 -204Q25 -204 7 -183T-12 -137Q-12 -110 7 -91T53 -71Q70 -71 82 -81T95 -112Q95 -148 63 -167Q69 -168 77 -168Q111 -168 139 -140T182 -74L193 -32Q204 11 219 72T251 197T278 308T289 365Q289 372 288 376Z">
+                                                </path>
+                                                <path stroke-width="0" id="E250-MJMAIN-28"
+                                                    d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z">
+                                                </path>
+                                                <path stroke-width="0" id="E250-MJMATHI-3BB"
+                                                    d="M166 673Q166 685 183 694H202Q292 691 316 644Q322 629 373 486T474 207T524 67Q531 47 537 34T546 15T551 6T555 2T556 -2T550 -11H482Q457 3 450 18T399 152L354 277L340 262Q327 246 293 207T236 141Q211 112 174 69Q123 9 111 -1T83 -12Q47 -12 47 20Q47 37 61 52T199 187Q229 216 266 252T321 306L338 322Q338 323 288 462T234 612Q214 657 183 657Q166 657 166 673Z">
+                                                </path>
+                                                <path stroke-width="0" id="E250-MJMAIN-2032"
+                                                    d="M79 43Q73 43 52 49T30 61Q30 68 85 293T146 528Q161 560 198 560Q218 560 240 545T262 501Q262 496 260 486Q259 479 173 263T84 45T79 43Z">
+                                                </path>
+                                                <path stroke-width="0" id="E250-MJMAIN-29"
+                                                    d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z">
+                                                </path>
+                                                <path stroke-width="0" id="E250-MJSZ4-28"
+                                                    d="M758 -1237T758 -1240T752 -1249H736Q718 -1249 717 -1248Q711 -1245 672 -1199Q237 -706 237 251T672 1700Q697 1730 716 1749Q718 1750 735 1750H752Q758 1744 758 1741Q758 1737 740 1713T689 1644T619 1537T540 1380T463 1176Q348 802 348 251Q348 -242 441 -599T744 -1218Q758 -1237 758 -1240Z">
+                                                </path>
+                                                <path stroke-width="0" id="E250-MJSZ4-29"
+                                                    d="M33 1741Q33 1750 51 1750H60H65Q73 1750 81 1743T119 1700Q554 1207 554 251Q554 -707 119 -1199Q76 -1250 66 -1250Q65 -1250 62 -1250T56 -1249Q55 -1249 53 -1249T49 -1250Q33 -1250 33 -1239Q33 -1236 50 -1214T98 -1150T163 -1052T238 -910T311 -727Q443 -335 443 251Q443 402 436 532T405 831T339 1142T224 1438T50 1716Q33 1737 33 1741Z">
+                                                </path>
+                                                <path stroke-width="0" id="E250-MJMAIN-39B"
+                                                    d="M320 708Q326 716 340 716H348H355Q367 716 372 708Q374 706 423 547T523 226T575 62Q581 52 591 50T634 46H661V0H653Q644 3 532 3Q411 3 390 0H379V46H392Q464 46 464 65Q463 70 390 305T316 539L246 316Q177 95 177 84Q177 72 198 59T248 46H253V0H245Q230 3 130 3Q47 3 38 0H32V46H45Q112 51 127 91Q128 92 224 399T320 708Z">
+                                                </path>
+                                                <path stroke-width="0" id="E250-MJMAIN-2B"
+                                                    d="M56 237T56 250T70 270H369V420L370 570Q380 583 389 583Q402 583 409 568V270H707Q722 262 722 250T707 230H409V-68Q401 -82 391 -82H389H387Q375 -82 369 -68V230H70Q56 237 56 250Z">
+                                                </path>
+                                                <path stroke-width="0" id="E250-MJMATHI-58"
+                                                    d="M42 0H40Q26 0 26 11Q26 15 29 27Q33 41 36 43T55 46Q141 49 190 98Q200 108 306 224T411 342Q302 620 297 625Q288 636 234 637H206Q200 643 200 645T202 664Q206 677 212 683H226Q260 681 347 681Q380 681 408 681T453 682T473 682Q490 682 490 671Q490 670 488 658Q484 643 481 640T465 637Q434 634 411 620L488 426L541 485Q646 598 646 610Q646 628 622 635Q617 635 609 637Q594 637 594 648Q594 650 596 664Q600 677 606 683H618Q619 683 643 683T697 681T738 680Q828 680 837 683H845Q852 676 852 672Q850 647 840 637H824Q790 636 763 628T722 611T698 593L687 584Q687 585 592 480L505 384Q505 383 536 304T601 142T638 56Q648 47 699 46Q734 46 734 37Q734 35 732 23Q728 7 725 4T711 1Q708 1 678 1T589 2Q528 2 496 2T461 1Q444 1 444 10Q444 11 446 25Q448 35 450 39T455 44T464 46T480 47T506 54Q523 62 523 64Q522 64 476 181L429 299Q241 95 236 84Q232 76 232 72Q232 53 261 47Q262 47 267 47T273 46Q276 46 277 46T280 45T283 42T284 35Q284 26 282 19Q279 6 276 4T261 1Q258 1 243 1T201 2T142 2Q64 2 42 0Z">
+                                                </path>
+                                            </defs>
+                                            <g stroke="currentColor" fill="currentColor" stroke-width="0"
+                                                transform="matrix(1 0 0 -1 0 0)">
+                                                <g transform="translate(20646,0)">
+                                                    <use xlink:href="#E250-MJMAIN-398" x="0" y="0"></use>
+                                                    <use xlink:href="#E250-MJMAIN-3D" x="1055" y="0"></use>
+                                                    <g transform="translate(2111,0)">
+                                                        <use xlink:href="#E250-MJMAIN-6D"></use>
+                                                        <use xlink:href="#E250-MJMAIN-69" x="833" y="0"></use>
+                                                        <use xlink:href="#E250-MJMAIN-6E" x="1111" y="0"></use>
+                                                        <g transform="translate(565,-635)">
+                                                            <use transform="scale(0.707)" xlink:href="#E250-MJMATHI-69" x="0" y="0">
+                                                            </use>
+                                                            <use transform="scale(0.707)" xlink:href="#E250-MJMATHI-6A" x="345" y="0">
+                                                            </use>
+                                                        </g>
+                                                    </g>
+                                                    <g transform="translate(3945,0)">
+                                                        <use xlink:href="#E250-MJSZ4-28"></use>
+                                                        <g transform="translate(792,0)">
+                                                            <g transform="translate(120,0)">
+                                                                <rect stroke="none" width="1338" height="60" x="0" y="220"></rect>
+                                                                <g transform="translate(60,912)">
+                                                                    <use xlink:href="#E250-MJMATHI-3BB" x="0" y="0"></use>
+                                                                    <use transform="scale(0.707)" xlink:href="#E250-MJMAIN-2032" x="824"
+                                                                        y="444"></use>
+                                                                    <g transform="translate(583,-303)">
+                                                                        <use transform="scale(0.707)" xlink:href="#E250-MJMATHI-69"
+                                                                            x="0" y="0"></use>
+                                                                        <use transform="scale(0.707)" xlink:href="#E250-MJMATHI-6A"
+                                                                            x="345" y="0"></use>
+                                                                    </g>
+                                                                </g>
+                                                                <g transform="translate(60,-686)">
+                                                                    <use xlink:href="#E250-MJMATHI-3BB" x="0" y="0"></use>
+                                                                    <g transform="translate(583,-150)">
+                                                                        <use transform="scale(0.707)" xlink:href="#E250-MJMATHI-69"
+                                                                            x="0" y="0"></use>
+                                                                        <use transform="scale(0.707)" xlink:href="#E250-MJMATHI-6A"
+                                                                            x="345" y="0"></use>
+                                                                    </g>
+                                                                </g>
+                                                            </g>
+                                                        </g>
+                                                        <use xlink:href="#E250-MJSZ4-29" x="2370" y="0"></use>
+                                                    </g>
+                                                </g>
+                                                <g transform="translate(21265,-2490)">
+                                                    <use xlink:href="#E250-MJMAIN-39B" x="0" y="0"></use>
+                                                    <use transform="scale(0.707)" xlink:href="#E250-MJMAIN-2032" x="981" y="583"></use>
+                                                    <use xlink:href="#E250-MJMAIN-3D" x="1266" y="0"></use>
+                                                    <use xlink:href="#E250-MJMAIN-398" x="2322" y="0"></use>
+                                                    <use xlink:href="#E250-MJMAIN-39B" x="3100" y="0"></use>
+                                                    <use xlink:href="#E250-MJMAIN-2B" x="4016" y="0"></use>
+                                                    <use xlink:href="#E250-MJMATHI-58" x="5016" y="0"></use>
+                                                </g>
+                                            </g>
+                                        </svg></span></div>
+                                <script type="math/tex; mode=display" id="MathJax-Element-246">\Theta=\min_{ij}\left(\frac{\lambda_{ij}'}{\lambda_{ij}} \right)\\
+                \Lambda'=\Theta\Lambda+X</script>
+                            </div>
+                        </div>
+                        <p><span>延迟是把包裹从起始到目的所需时间。在网络达到饱和时，延迟也接近于无穷大。</span></p>
+                        <p><span>错误容忍通常考虑单一点错误容忍，即其中一个节点不能工作后，是否还能继续工作。</span></p>
+                        <h3><a name="一般度量时的错误" class="md-header-anchor"></a><span>一般度量时的错误</span></h3>
+                        <ul>
+                            <li><span>没有源队列，或者输入计算在源队列之后</span></li>
+                            <li><span>使用平均而不是最小发送通信量</span></li>
+                            <li><span>画接收通信量-延迟图</span></li>
+                            <li><span>没有度量所有产生的包裹</span></li>
+                            <li><span>只报告随机通信的结果</span></li>
+                        </ul>
+                        <h2><a name="仿真" class="md-header-anchor"></a><span>仿真</span></h2>
+                        <h3><a name="网络负载" class="md-header-anchor"></a><span>网络负载</span></h3>
+                        <ul>
+                            <li><span>应用驱动负载</span></li>
+                            <li><span>综合负载：注入、通信模式、包裹长度</span></li>
+                        </ul>
+                        <h3><a name="仿真度量" class="md-header-anchor"></a><span>仿真度量</span></h3>
+                        <ol start=''>
+                            <li><span>仿真器热身后，再开始度量，可以采用集成平均(ensemble average)。</span></li>
+                            <li><span>稳定状态采样：批量平均方法(batch means method)和复制方法(replication method)。</span></li>
+                            <li><span>置信区间</span></li>
+                        </ol>
+                        <h3><a name="仿真器设计" class="md-header-anchor"></a><span>仿真器设计</span></h3>
+                        <p><span>仿真方法：1. 基于周期(cycle-based)（分为读状态和写状态） 和 2. 事务驱动(event-driven)（用事务队列，基于单一事务）</span></p>
+                    </div>
+                </div> <!-- <div id="layout-content"> -->
+                <div id="footer-container">
+                    <div id="footer">
+                        <div id="footer-text">
+                            Last edited on 2020-08-13 by Xincheng Xie.
+                        </div> <!-- <div id="footer-text"> -->
+                    </div> <!-- <div id="footer"> -->
+                </div> <!-- <div id="footer-container"> -->
+            </div> <!-- <div id="layout-content-container"> -->
+        </div>
+        <!--- <div id="layout"> --->
+    </div>
+    <!--- <div id="main-container"> --->
+    <script>
+        function openNav() {
+            if (window.innerWidth <= 1200) {
+                document.getElementById("layout-menu").style.width = "280px";
+                document.getElementById("layout-content-container").style.marginLeft = "280.8px";
+                document.getElementById("layout-content-container").style.position = "fixed";
+            }
+        }
+        function closeNav() {
+            if (window.innerWidth <= 1200) {
+                document.getElementById("layout-menu").style.width = "0";
+                document.getElementById("layout-content-container").style.position = "static";
+                document.getElementById("layout-content-container").style.marginLeft = "0px";
+                setInterval(
+                    function () { location.reload() },
+                    500
+                );
+            }
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,471 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <link rel="icon" href="../images/icon.png">
+    <link rel="stylesheet" href="../typora.css" type="text/css" />
+    <link rel="stylesheet" href="../main.css" type="text/css" />
+    <link rel="stylesheet" href="../font-awesome/css/font-awesome.min.css">
+    <link href='https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext'
+        rel='stylesheet' type='text/css' />
+    <!--- <title></title> --->
+    <title>互连网络-一个简单的互连网络</title>
+</head>
+
+<body>
+    <div id="main-container">
+        <div id="header-container">
+            <div id="header">
+                <div id="header-icon-text-container">
+                    <div id="header-icon-container">
+                        <a href="../index.html"><img src="../images/icon.png" alt=""
+                                style="width: 100%; height: 100%; position: center; padding:0px; margin: 0px;"></a>
+                    </div>
+                    <div id="header-text-container">
+                        <a href="../index.html">Xincheng's Homepage</a>
+                    </div>
+                </div>
+                <div id="main">
+                    <button class="openbtn" onclick="openNav()">☰</button>
+                </div>
+            </div>
+        </div>
+        <div id="layout">
+            <div id="layout-menu-container">
+                <div id="layout-menu">
+                    <div class="menu-item"><a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+                    </div>
+                    <div class="menu-item"><a href="../index.html">About</a></div>
+                    <div class="menu-category">并行计算</div>
+                    <div class="menu-item"><a href="并行计算机结构模型.html">并行计算机结构模型</a></div>
+                    <div class="menu-item"><a href="并行程序设计.html">并行程序设计</a></div>
+                    <div class="menu-item"><a href="并行计算机性能测评.html">并行计算机性能测评</a></div>
+                    <div class="menu-item"><a href="高速缓存一致性.html">高速缓存一致性</a></div>
+                    <div class="menu-item"><a href="互连网络.html">互连网络</a></div>
+                    <div class="menu-item"><a href="互连网络-一个简单的互连网络.html" class="current">互连网络-一个简单的互连网络</a></div>
+                    <div class="menu-item"><a href="互连网络-网络拓扑结构.html">互连网络-网络拓扑结构</a></div>
+                    <div class="menu-item"><a href="互连网络-网络路由算法.html">互连网络-网络路由算法</a></div>
+                    <div class="menu-item"><a href="互连网络-流量控制.html">互连网络-流量控制</a></div>
+                    <div class="menu-item"><a href="互连网络-服务质量.html">互连网络-服务质量</a></div>
+                    <div class="menu-item"><a href="互连网络-路由器架构.html">互连网络-路由器架构</a></div>
+                    <div class="menu-item"><a href="互连网络-性能分析.html">互连网络-性能分析</a></div>
+                </div> <!-- <div id="layout-menu"> -->
+            </div> <!-- <div id="layout-menu-container"> -->
+            <div id="layout-content-container">
+                <div id="layout-content">
+                    <div id='write' class='is-node'>
+                        <h1><a name="互连网络-一个简单的互连网络" class="md-header-anchor"></a><span>互连网络-一个简单的互连网络</span></h1>
+                        <div class='md-toc' mdtype='toc'>
+                            <p class="md-toc-content" role="list"><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n0"><a
+                                        class="md-toc-inner" href="#互连网络-一个简单的互连网络">互连网络-一个简单的互连网络</a></span><span role="listitem"
+                                    class="md-toc-item md-toc-h2" data-ref="n3"><a class="md-toc-inner"
+                                        href="#互连网络的参数">互连网络的参数</a></span><span role="listitem" class="md-toc-item md-toc-h2"
+                                    data-ref="n21"><a class="md-toc-inner" href="#设计一个简单的互连网络">设计一个简单的互连网络</a></span><span
+                                    role="listitem" class="md-toc-item md-toc-h3" data-ref="n22"><a class="md-toc-inner"
+                                        href="#设计的要求和限制">设计的要求和限制</a></span><span role="listitem" class="md-toc-item md-toc-h3"
+                                    data-ref="n31"><a class="md-toc-inner" href="#网络拓扑结构topology">网络拓扑结构(topology)</a></span><span
+                                    role="listitem" class="md-toc-item md-toc-h3" data-ref="n37"><a class="md-toc-inner"
+                                        href="#路由routing">路由(routing)</a></span><span role="listitem" class="md-toc-item md-toc-h3"
+                                    data-ref="n39"><a class="md-toc-inner" href="#流量控制flow-control">流量控制(flow control)</a></span><span
+                                    role="listitem" class="md-toc-item md-toc-h3" data-ref="n42"><a class="md-toc-inner"
+                                        href="#路由器设计router">路由器设计(router)</a></span><span role="listitem" class="md-toc-item md-toc-h3"
+                                    data-ref="n47"><a class="md-toc-inner" href="#性能分析performance-analysis">性能分析(performance
+                                        analysis)</a></span></p>
+                        </div>
+                        <h2><a name="互连网络的参数" class="md-header-anchor"></a><span>互连网络的参数</span></h2>
+                        <ol start=''>
+                            <li><span>节点(terminal)数目</span></li>
+                            <li><span>每个节点的带宽峰值(peak bandwidth)</span></li>
+                            <li><span>每个节点的带宽平均值(average bandwidth)</span></li>
+                            <li><span>需要的延迟(latency)</span></li>
+                            <li><span>消息长度(message size)以及消息长度的分布(distribution)</span></li>
+                            <li><span>通信模式(traffic pattern)</span></li>
+                            <li><span>需要的服务质量(quality of service)</span></li>
+                            <li><span>互连网络的可靠性(reliability)和可用性(availability)。</span></li>
+                        </ol>
+                        <h2><a name="设计一个简单的互连网络" class="md-header-anchor"></a><span>设计一个简单的互连网络</span></h2>
+                        <h3><a name="设计的要求和限制" class="md-header-anchor"></a><span>设计的要求和限制</span></h3>
+                        <ol start=''>
+                            <li>
+                                <p><span>设计要求</span></p>
+                                <p><img src="pics\20.png" alt="specification" style="zoom: 67%;" />
+                                </p>
+                            </li>
+                            <li>
+                                <p><span>设计限制</span></p>
+                                <p><img src="pics\21.png" alt="constraints" style="zoom:67%;" /></p>
+                            </li>
+                        </ol>
+                        <p><span>随机通信(random traffic)意思是每个输出节点向任一个输入节点通信的概率相等。</span></p>
+                        <h3><a name="网络拓扑结构topology" class="md-header-anchor"></a><span>网络拓扑结构(topology)</span></h3>
+                        <p><span>为了简便，采用蝶式网络。之后需要选择蝶式网络的基数，并决定网络的加速比。网络的加速比定义为总共的输入带宽比上网络的理想带宽。网络的理想带宽定义为最佳的吞吐量。这里，可以设计网络的加速比为8。加速比可以看作在工程应用中的安全系数。</span>
+                        </p>
+                        <p><span>由于需求的信道带宽为0.25Gbyte/s，因此需要设计网络信道的带宽为8</span>&times;<span>0.25=2Gbytes/s，由于芯片上一个引脚的带宽(Chip pin
+                                bandwidth)为1Gbit/s，因此需要16个1Gbit/s的信号，再加上两个额外的头信号，一个信道总共18个信号。一个芯片总共可以容纳150个信号，因此一个芯片上总共可以有150/18</span>&asymp;<span>8个信道，因此选择基4的蝶式网络，4个人输入信道和4个输出信道。</span>
+                        </p>
+                        <p><span>由于输入输出信道需要64个，因此需要log</span><sub><span>4</span></sub><span>64=3阶交换节点，称为radix-4, 3-stage butterfly或4-ary
+                                3-fly。</span></p>
+                        <p><span>网络拓扑的最后一步就是要把芯片进行组装(packaging)，注意每个电路板允许的信号数量为750。一个芯片有8</span>&times;<span>18=144个信号，总共有144</span>&times;<span>4=576个信号输入输出，最后可以有：</span>
+                        </p>
+                        <p><img src="pics\22.png" alt="22" style="zoom: 80%;" /></p>
+                        <h3><a name="路由routing" class="md-header-anchor"></a><span>路由(routing)</span></h3>
+                        <p><span>这个简单的网络运用目的地标记路由算法(destination-tag
+                                routing)。如任意输入节点需要到输出节点35=100011</span><sub><span>2</span></sub><span>，首先选择最高两位10，即第二阶第三块电路板；将目的二进制向前位移2位，001100</span><sub><span>2</span></sub><span>，再选择最高两位00，即电路板内的第一个芯片；最后继续位移两位，110000</span><sub><span>2</span></sub><span>，选择最高两位11，即最后一个输出位。</span>
+                        </p>
+                        <h3><a name="流量控制flow-control" class="md-header-anchor"></a><span>流量控制(flow control)</span></h3>
+                        <p><span>为了将数据完整的传输，有时需要把一个长消息打散为多个包裹。一个信道有18个信号，其中16位为有效荷载(payload)物理位(physical digits, phits)，2位为标头物理位(header
+                                phits)，前两位可以将后面的16位分为三种情况，header(H)、payload(P)、null(N)。多个包裹可以表示为(HP</span><span>*</span><span>N</span><span>*</span><span>)</span><span>*</span><span>。</span>
+                        </p>
+                        <p><img src="pics\23.png" referrerpolicy="no-referrer" alt="flow"></p>
+                        <h3><a name="路由器设计router" class="md-header-anchor"></a><span>路由器设计(router)</span></h3>
+                        <p><img src="pics\24.png" alt="router" style="zoom:80%;" /></p>
+                        <p><span>对于蝶式网络的一个路由器来说，一个输入进入交换节点后，对应一个输出。分配器(allocator)的作用是将对应输出的分配器激活，并选择相应的输入。</span></p>
+                        <p><img src="pics\25.png" referrerpolicy="no-referrer" alt="allocator"></p>
+                        <p><span>decode的作用是将包裹解码，找到正确的分配器以及分配器的输入端口和类型；arbiter的作用是是仲裁是否是头包裹，若是的话需要将目的地址移位；hold
+                                logic的作用是让后续包裹持续的向输出端口输出。</span></p>
+                        <h3><a name="性能分析performance-analysis" class="md-header-anchor"></a><span>性能分析(performance analysis)</span></h3>
+                        <p><span>通过三个维度评价一个互连网络：开销、时延和吞吐量。</span></p>
+                        <p><img src="pics\26.png" referrerpolicy="no-referrer" alt="model"></p>
+                        <p>&lambda;<span>是包裹输入网络的注入率，常常被信道带宽归一化，因此</span>&lambda;<span>=1是最大的注入率。p</span><sub><span>i</span></sub><span>是注入第i+1阶的注入率，由于被归一化，可以看作是传向下一阶的概率。</span>
+                        </p>
+                        <div contenteditable="false" spellcheck="false" class="mathjax-block md-end-block md-math-block md-rawblock"
+                            id="mathjax-n51" cid="n51" mdtype="math_block">
+                            <div class="md-rawblock-container md-math-container" tabindex="-1">
+                                <div class="MathJax_SVG_Display" style="text-align: center;"><span class="MathJax_SVG"
+                                        id="MathJax-Element-194-Frame" tabindex="-1"
+                                        style="font-size: 100%; display: inline-block;"><svg xmlns:xlink="http://www.w3.org/1999/xlink"
+                                            width="21.885ex" height="5.029ex" viewBox="-39 -1409.3 9422.6 2165.1" role="img"
+                                            focusable="false" style="vertical-align: -1.756ex; margin-left: -0.091ex; max-width: 100%;">
+                                            <defs>
+                                                <path stroke-width="0" id="E198-MJMATHI-70"
+                                                    d="M23 287Q24 290 25 295T30 317T40 348T55 381T75 411T101 433T134 442Q209 442 230 378L240 387Q302 442 358 442Q423 442 460 395T497 281Q497 173 421 82T249 -10Q227 -10 210 -4Q199 1 187 11T168 28L161 36Q160 35 139 -51T118 -138Q118 -144 126 -145T163 -148H188Q194 -155 194 -157T191 -175Q188 -187 185 -190T172 -194Q170 -194 161 -194T127 -193T65 -192Q-5 -192 -24 -194H-32Q-39 -187 -39 -183Q-37 -156 -26 -148H-6Q28 -147 33 -136Q36 -130 94 103T155 350Q156 355 156 364Q156 405 131 405Q109 405 94 377T71 316T59 280Q57 278 43 278H29Q23 284 23 287ZM178 102Q200 26 252 26Q282 26 310 49T356 107Q374 141 392 215T411 325V331Q411 405 350 405Q339 405 328 402T306 393T286 380T269 365T254 350T243 336T235 326L232 322Q232 321 229 308T218 264T204 212Q178 106 178 102Z">
+                                                </path>
+                                                <path stroke-width="0" id="E198-MJMATHI-69"
+                                                    d="M184 600Q184 624 203 642T247 661Q265 661 277 649T290 619Q290 596 270 577T226 557Q211 557 198 567T184 600ZM21 287Q21 295 30 318T54 369T98 420T158 442Q197 442 223 419T250 357Q250 340 236 301T196 196T154 83Q149 61 149 51Q149 26 166 26Q175 26 185 29T208 43T235 78T260 137Q263 149 265 151T282 153Q302 153 302 143Q302 135 293 112T268 61T223 11T161 -11Q129 -11 102 10T74 74Q74 91 79 106T122 220Q160 321 166 341T173 380Q173 404 156 404H154Q124 404 99 371T61 287Q60 286 59 284T58 281T56 279T53 278T49 278T41 278H27Q21 284 21 287Z">
+                                                </path>
+                                                <path stroke-width="0" id="E198-MJMAIN-2B"
+                                                    d="M56 237T56 250T70 270H369V420L370 570Q380 583 389 583Q402 583 409 568V270H707Q722 262 722 250T707 230H409V-68Q401 -82 391 -82H389H387Q375 -82 369 -68V230H70Q56 237 56 250Z">
+                                                </path>
+                                                <path stroke-width="0" id="E198-MJMAIN-31"
+                                                    d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z">
+                                                </path>
+                                                <path stroke-width="0" id="E198-MJMAIN-3D"
+                                                    d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z">
+                                                </path>
+                                                <path stroke-width="0" id="E198-MJMAIN-2212"
+                                                    d="M84 237T84 250T98 270H679Q694 262 694 250T679 230H98Q84 237 84 250Z"></path>
+                                                <path stroke-width="0" id="E198-MJMAIN-28"
+                                                    d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z">
+                                                </path>
+                                                <path stroke-width="0" id="E198-MJMAIN-34"
+                                                    d="M462 0Q444 3 333 3Q217 3 199 0H190V46H221Q241 46 248 46T265 48T279 53T286 61Q287 63 287 115V165H28V211L179 442Q332 674 334 675Q336 677 355 677H373L379 671V211H471V165H379V114Q379 73 379 66T385 54Q393 47 442 46H471V0H462ZM293 211V545L74 212L183 211H293Z">
+                                                </path>
+                                                <path stroke-width="0" id="E198-MJMAIN-29"
+                                                    d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z">
+                                                </path>
+                                                <path stroke-width="0" id="E198-MJSZ2-28"
+                                                    d="M180 96T180 250T205 541T266 770T353 944T444 1069T527 1150H555Q561 1144 561 1141Q561 1137 545 1120T504 1072T447 995T386 878T330 721T288 513T272 251Q272 133 280 56Q293 -87 326 -209T399 -405T475 -531T536 -609T561 -640Q561 -643 555 -649H527Q483 -612 443 -568T353 -443T266 -270T205 -41Z">
+                                                </path>
+                                                <path stroke-width="0" id="E198-MJSZ2-29"
+                                                    d="M35 1138Q35 1150 51 1150H56H69Q113 1113 153 1069T243 944T330 771T391 541T416 250T391 -40T330 -270T243 -443T152 -568T69 -649H56Q43 -649 39 -647T35 -637Q65 -607 110 -548Q283 -316 316 56Q324 133 324 251Q324 368 316 445Q278 877 48 1123Q36 1137 35 1138Z">
+                                                </path>
+                                            </defs>
+                                            <g stroke="currentColor" fill="currentColor" stroke-width="0"
+                                                transform="matrix(1 0 0 -1 0 0)">
+                                                <use xlink:href="#E198-MJMATHI-70" x="0" y="0"></use>
+                                                <g transform="translate(503,-150)">
+                                                    <use transform="scale(0.707)" xlink:href="#E198-MJMATHI-69" x="0" y="0"></use>
+                                                    <use transform="scale(0.707)" xlink:href="#E198-MJMAIN-2B" x="345" y="0"></use>
+                                                    <use transform="scale(0.707)" xlink:href="#E198-MJMAIN-31" x="1123" y="0"></use>
+                                                </g>
+                                                <use xlink:href="#E198-MJMAIN-3D" x="2028" y="0"></use>
+                                                <use xlink:href="#E198-MJMAIN-31" x="3084" y="0"></use>
+                                                <use xlink:href="#E198-MJMAIN-2212" x="3806" y="0"></use>
+                                                <g transform="translate(4806,0)">
+                                                    <use xlink:href="#E198-MJSZ2-28"></use>
+                                                    <use xlink:href="#E198-MJMAIN-31" x="597" y="0"></use>
+                                                    <use xlink:href="#E198-MJMAIN-2212" x="1319" y="0"></use>
+                                                    <g transform="translate(2097,0)">
+                                                        <g transform="translate(342,0)">
+                                                            <rect stroke="none" width="966" height="60" x="0" y="220"></rect>
+                                                            <g transform="translate(60,676)">
+                                                                <use xlink:href="#E198-MJMATHI-70" x="0" y="0"></use>
+                                                                <use transform="scale(0.707)" xlink:href="#E198-MJMATHI-69" x="711"
+                                                                    y="-213"></use>
+                                                            </g>
+                                                            <use xlink:href="#E198-MJMAIN-34" x="233" y="-686"></use>
+                                                        </g>
+                                                    </g>
+                                                    <use xlink:href="#E198-MJSZ2-29" x="3526" y="-1"></use>
+                                                    <use transform="scale(0.707)" xlink:href="#E198-MJMAIN-34" x="5831" y="1239"></use>
+                                                </g>
+                                            </g>
+                                        </svg></span></div>
+                                <script type="math/tex; mode=display"
+                                    id="MathJax-Element-194">p_{i+1}=1-\left(1-\frac{p_i}4\right)^4</script>
+                            </div>
+                        </div>
+                        <p><span>由于加速比为8，可以假设输入的通信量</span>&lambda;<span>为0.125，假设丢弃的包不再回传，p</span><sub><span>0</span></sub><span>=</span>&lambda;<span>，可以知道下面三阶输出分别为0.119，0.114，0.109。给予的通信量(offerd
+                                traffic)是0.125，接收的通信量(accepted
+                                traffic)或吞吐量(throughput)为0.109。当考虑丢包重新注入的话，在网络达到稳定时p</span><sub><span>0</span></sub><span>=</span>&lambda;<span>。</span>
+                        </p>
+                        <p><img src="pics\27.png" alt="t-t" style="zoom: 67%;" /></p>
+                        <p><span>延时方面只考虑标头延时(header latency)，当网络达到稳定是，丢包概率为：</span></p>
+                        <div contenteditable="false" spellcheck="false" class="mathjax-block md-end-block md-math-block md-rawblock"
+                            id="mathjax-n55" cid="n55" mdtype="math_block">
+                            <div class="md-rawblock-container md-math-container" tabindex="-1">
+                                <div class="MathJax_SVG_Display" style="text-align: center;"><span class="MathJax_SVG"
+                                        id="MathJax-Element-195-Frame" tabindex="-1"
+                                        style="font-size: 100%; display: inline-block;"><svg xmlns:xlink="http://www.w3.org/1999/xlink"
+                                            width="14.299ex" height="5.379ex" viewBox="0 -1359 6156.6 2315.9" role="img"
+                                            focusable="false" style="vertical-align: -2.223ex; max-width: 100%;">
+                                            <defs>
+                                                <path stroke-width="0" id="E199-MJMATHI-50"
+                                                    d="M287 628Q287 635 230 637Q206 637 199 638T192 648Q192 649 194 659Q200 679 203 681T397 683Q587 682 600 680Q664 669 707 631T751 530Q751 453 685 389Q616 321 507 303Q500 302 402 301H307L277 182Q247 66 247 59Q247 55 248 54T255 50T272 48T305 46H336Q342 37 342 35Q342 19 335 5Q330 0 319 0Q316 0 282 1T182 2Q120 2 87 2T51 1Q33 1 33 11Q33 13 36 25Q40 41 44 43T67 46Q94 46 127 49Q141 52 146 61Q149 65 218 339T287 628ZM645 554Q645 567 643 575T634 597T609 619T560 635Q553 636 480 637Q463 637 445 637T416 636T404 636Q391 635 386 627Q384 621 367 550T332 412T314 344Q314 342 395 342H407H430Q542 342 590 392Q617 419 631 471T645 554Z">
+                                                </path>
+                                                <path stroke-width="0" id="E199-MJMATHI-44"
+                                                    d="M287 628Q287 635 230 637Q207 637 200 638T193 647Q193 655 197 667T204 682Q206 683 403 683Q570 682 590 682T630 676Q702 659 752 597T803 431Q803 275 696 151T444 3L430 1L236 0H125H72Q48 0 41 2T33 11Q33 13 36 25Q40 41 44 43T67 46Q94 46 127 49Q141 52 146 61Q149 65 218 339T287 628ZM703 469Q703 507 692 537T666 584T629 613T590 629T555 636Q553 636 541 636T512 636T479 637H436Q392 637 386 627Q384 623 313 339T242 52Q242 48 253 48T330 47Q335 47 349 47T373 46Q499 46 581 128Q617 164 640 212T683 339T703 469Z">
+                                                </path>
+                                                <path stroke-width="0" id="E199-MJMAIN-3D"
+                                                    d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z">
+                                                </path>
+                                                <path stroke-width="0" id="E199-MJMATHI-70"
+                                                    d="M23 287Q24 290 25 295T30 317T40 348T55 381T75 411T101 433T134 442Q209 442 230 378L240 387Q302 442 358 442Q423 442 460 395T497 281Q497 173 421 82T249 -10Q227 -10 210 -4Q199 1 187 11T168 28L161 36Q160 35 139 -51T118 -138Q118 -144 126 -145T163 -148H188Q194 -155 194 -157T191 -175Q188 -187 185 -190T172 -194Q170 -194 161 -194T127 -193T65 -192Q-5 -192 -24 -194H-32Q-39 -187 -39 -183Q-37 -156 -26 -148H-6Q28 -147 33 -136Q36 -130 94 103T155 350Q156 355 156 364Q156 405 131 405Q109 405 94 377T71 316T59 280Q57 278 43 278H29Q23 284 23 287ZM178 102Q200 26 252 26Q282 26 310 49T356 107Q374 141 392 215T411 325V331Q411 405 350 405Q339 405 328 402T306 393T286 380T269 365T254 350T243 336T235 326L232 322Q232 321 229 308T218 264T204 212Q178 106 178 102Z">
+                                                </path>
+                                                <path stroke-width="0" id="E199-MJMAIN-30"
+                                                    d="M96 585Q152 666 249 666Q297 666 345 640T423 548Q460 465 460 320Q460 165 417 83Q397 41 362 16T301 -15T250 -22Q224 -22 198 -16T137 16T82 83Q39 165 39 320Q39 494 96 585ZM321 597Q291 629 250 629Q208 629 178 597Q153 571 145 525T137 333Q137 175 145 125T181 46Q209 16 250 16Q290 16 318 46Q347 76 354 130T362 333Q362 478 354 524T321 597Z">
+                                                </path>
+                                                <path stroke-width="0" id="E199-MJMAIN-2212"
+                                                    d="M84 237T84 250T98 270H679Q694 262 694 250T679 230H98Q84 237 84 250Z"></path>
+                                                <path stroke-width="0" id="E199-MJMAIN-33"
+                                                    d="M127 463Q100 463 85 480T69 524Q69 579 117 622T233 665Q268 665 277 664Q351 652 390 611T430 522Q430 470 396 421T302 350L299 348Q299 347 308 345T337 336T375 315Q457 262 457 175Q457 96 395 37T238 -22Q158 -22 100 21T42 130Q42 158 60 175T105 193Q133 193 151 175T169 130Q169 119 166 110T159 94T148 82T136 74T126 70T118 67L114 66Q165 21 238 21Q293 21 321 74Q338 107 338 175V195Q338 290 274 322Q259 328 213 329L171 330L168 332Q166 335 166 348Q166 366 174 366Q202 366 232 371Q266 376 294 413T322 525V533Q322 590 287 612Q265 626 240 626Q208 626 181 615T143 592T132 580H135Q138 579 143 578T153 573T165 566T175 555T183 540T186 520Q186 498 172 481T127 463Z">
+                                                </path>
+                                            </defs>
+                                            <g stroke="currentColor" fill="currentColor" stroke-width="0"
+                                                transform="matrix(1 0 0 -1 0 0)">
+                                                <use xlink:href="#E199-MJMATHI-50" x="0" y="0"></use>
+                                                <use transform="scale(0.707)" xlink:href="#E199-MJMATHI-44" x="907" y="-213"></use>
+                                                <use xlink:href="#E199-MJMAIN-3D" x="1605" y="0"></use>
+                                                <g transform="translate(2383,0)">
+                                                    <g transform="translate(397,0)">
+                                                        <rect stroke="none" width="3255" height="60" x="0" y="220"></rect>
+                                                        <g transform="translate(60,676)">
+                                                            <use xlink:href="#E199-MJMATHI-70" x="0" y="0"></use>
+                                                            <use transform="scale(0.707)" xlink:href="#E199-MJMAIN-30" x="711" y="-213">
+                                                            </use>
+                                                            <use xlink:href="#E199-MJMAIN-2212" x="1178" y="0"></use>
+                                                            <g transform="translate(2178,0)">
+                                                                <use xlink:href="#E199-MJMATHI-70" x="0" y="0"></use>
+                                                                <use transform="scale(0.707)" xlink:href="#E199-MJMAIN-33" x="711"
+                                                                    y="-213"></use>
+                                                            </g>
+                                                        </g>
+                                                        <g transform="translate(1149,-686)">
+                                                            <use xlink:href="#E199-MJMATHI-70" x="0" y="0"></use>
+                                                            <use transform="scale(0.707)" xlink:href="#E199-MJMAIN-30" x="711" y="-213">
+                                                            </use>
+                                                        </g>
+                                                    </g>
+                                                </g>
+                                            </g>
+                                        </svg></span></div>
+                                <script type="math/tex; mode=display" id="MathJax-Element-195">P_D=\frac{p_0-p_3}{p_0}</script>
+                            </div>
+                        </div>
+                        <p><span>一个包从输入至输出需要经历六次时钟循环(经过三个阶，并且每个阶有两个触发式寄存器)，假设6个时钟定义为延迟1，那么，如果一个包丢失</span><span class="MathJax_SVG"
+                                tabindex="-1" style="font-size: 100%; display: inline-block;"><svg
+                                    xmlns:xlink="http://www.w3.org/1999/xlink" width="0.801ex" height="1.994ex"
+                                    viewBox="0 -755.9 345 858.4" role="img" focusable="false" style="vertical-align: -0.238ex;">
+                                    <defs>
+                                        <path stroke-width="0" id="E5-MJMATHI-69"
+                                            d="M184 600Q184 624 203 642T247 661Q265 661 277 649T290 619Q290 596 270 577T226 557Q211 557 198 567T184 600ZM21 287Q21 295 30 318T54 369T98 420T158 442Q197 442 223 419T250 357Q250 340 236 301T196 196T154 83Q149 61 149 51Q149 26 166 26Q175 26 185 29T208 43T235 78T260 137Q263 149 265 151T282 153Q302 153 302 143Q302 135 293 112T268 61T223 11T161 -11Q129 -11 102 10T74 74Q74 91 79 106T122 220Q160 321 166 341T173 380Q173 404 156 404H154Q124 404 99 371T61 287Q60 286 59 284T58 281T56 279T53 278T49 278T41 278H27Q21 284 21 287Z">
+                                        </path>
+                                    </defs>
+                                    <g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)">
+                                        <use xlink:href="#E5-MJMATHI-69" x="0" y="0"></use>
+                                    </g>
+                                </svg></span>
+                            <script type="math/tex">i</script><span>次，那么，延迟时间为</span><span class="MathJax_SVG" tabindex="-1"
+                                style="font-size: 100%; display: inline-block;"><svg xmlns:xlink="http://www.w3.org/1999/xlink"
+                                    width="4.802ex" height="2.11ex" viewBox="0 -755.9 2067.4 908.7" role="img" focusable="false"
+                                    style="vertical-align: -0.355ex;">
+                                    <defs>
+                                        <path stroke-width="0" id="E6-MJMATHI-69"
+                                            d="M184 600Q184 624 203 642T247 661Q265 661 277 649T290 619Q290 596 270 577T226 557Q211 557 198 567T184 600ZM21 287Q21 295 30 318T54 369T98 420T158 442Q197 442 223 419T250 357Q250 340 236 301T196 196T154 83Q149 61 149 51Q149 26 166 26Q175 26 185 29T208 43T235 78T260 137Q263 149 265 151T282 153Q302 153 302 143Q302 135 293 112T268 61T223 11T161 -11Q129 -11 102 10T74 74Q74 91 79 106T122 220Q160 321 166 341T173 380Q173 404 156 404H154Q124 404 99 371T61 287Q60 286 59 284T58 281T56 279T53 278T49 278T41 278H27Q21 284 21 287Z">
+                                        </path>
+                                        <path stroke-width="0" id="E6-MJMAIN-2B"
+                                            d="M56 237T56 250T70 270H369V420L370 570Q380 583 389 583Q402 583 409 568V270H707Q722 262 722 250T707 230H409V-68Q401 -82 391 -82H389H387Q375 -82 369 -68V230H70Q56 237 56 250Z">
+                                        </path>
+                                        <path stroke-width="0" id="E6-MJMAIN-31"
+                                            d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z">
+                                        </path>
+                                    </defs>
+                                    <g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)">
+                                        <use xlink:href="#E6-MJMATHI-69" x="0" y="0"></use>
+                                        <use xlink:href="#E6-MJMAIN-2B" x="567" y="0"></use>
+                                        <use xlink:href="#E6-MJMAIN-31" x="1567" y="0"></use>
+                                    </g>
+                                </svg></span>
+                            <script type="math/tex">i+1</script><span>，平均延迟可以计算为：</span></p>
+                        <div contenteditable="false" spellcheck="false" class="mathjax-block md-end-block md-math-block md-rawblock"
+                            id="mathjax-n57" cid="n57" mdtype="math_block">
+                            <div class="md-rawblock-container md-math-container" tabindex="-1">
+                                <div class="MathJax_SVG_Display" style="text-align: center;"><span class="MathJax_SVG"
+                                        id="MathJax-Element-196-Frame" tabindex="-1"
+                                        style="font-size: 100%; display: inline-block;"><svg xmlns:xlink="http://www.w3.org/1999/xlink"
+                                            width="43.841ex" height="6.78ex" viewBox="0 -1660.6 18876 2919" role="img" focusable="false"
+                                            style="vertical-align: -2.923ex; max-width: 100%;">
+                                            <defs>
+                                                <path stroke-width="0" id="E200-MJMATHI-54"
+                                                    d="M40 437Q21 437 21 445Q21 450 37 501T71 602L88 651Q93 669 101 677H569H659Q691 677 697 676T704 667Q704 661 687 553T668 444Q668 437 649 437Q640 437 637 437T631 442L629 445Q629 451 635 490T641 551Q641 586 628 604T573 629Q568 630 515 631Q469 631 457 630T439 622Q438 621 368 343T298 60Q298 48 386 46Q418 46 427 45T436 36Q436 31 433 22Q429 4 424 1L422 0Q419 0 415 0Q410 0 363 1T228 2Q99 2 64 0H49Q43 6 43 9T45 27Q49 40 55 46H83H94Q174 46 189 55Q190 56 191 56Q196 59 201 76T241 233Q258 301 269 344Q339 619 339 625Q339 630 310 630H279Q212 630 191 624Q146 614 121 583T67 467Q60 445 57 441T43 437H40Z">
+                                                </path>
+                                                <path stroke-width="0" id="E200-MJMAIN-3D"
+                                                    d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z">
+                                                </path>
+                                                <path stroke-width="0" id="E200-MJSZ2-2211"
+                                                    d="M60 948Q63 950 665 950H1267L1325 815Q1384 677 1388 669H1348L1341 683Q1320 724 1285 761Q1235 809 1174 838T1033 881T882 898T699 902H574H543H251L259 891Q722 258 724 252Q725 250 724 246Q721 243 460 -56L196 -356Q196 -357 407 -357Q459 -357 548 -357T676 -358Q812 -358 896 -353T1063 -332T1204 -283T1307 -196Q1328 -170 1348 -124H1388Q1388 -125 1381 -145T1356 -210T1325 -294L1267 -449L666 -450Q64 -450 61 -448Q55 -446 55 -439Q55 -437 57 -433L590 177Q590 178 557 222T452 366T322 544L56 909L55 924Q55 945 60 948Z">
+                                                </path>
+                                                <path stroke-width="0" id="E200-MJMATHI-69"
+                                                    d="M184 600Q184 624 203 642T247 661Q265 661 277 649T290 619Q290 596 270 577T226 557Q211 557 198 567T184 600ZM21 287Q21 295 30 318T54 369T98 420T158 442Q197 442 223 419T250 357Q250 340 236 301T196 196T154 83Q149 61 149 51Q149 26 166 26Q175 26 185 29T208 43T235 78T260 137Q263 149 265 151T282 153Q302 153 302 143Q302 135 293 112T268 61T223 11T161 -11Q129 -11 102 10T74 74Q74 91 79 106T122 220Q160 321 166 341T173 380Q173 404 156 404H154Q124 404 99 371T61 287Q60 286 59 284T58 281T56 279T53 278T49 278T41 278H27Q21 284 21 287Z">
+                                                </path>
+                                                <path stroke-width="0" id="E200-MJMAIN-30"
+                                                    d="M96 585Q152 666 249 666Q297 666 345 640T423 548Q460 465 460 320Q460 165 417 83Q397 41 362 16T301 -15T250 -22Q224 -22 198 -16T137 16T82 83Q39 165 39 320Q39 494 96 585ZM321 597Q291 629 250 629Q208 629 178 597Q153 571 145 525T137 333Q137 175 145 125T181 46Q209 16 250 16Q290 16 318 46Q347 76 354 130T362 333Q362 478 354 524T321 597Z">
+                                                </path>
+                                                <path stroke-width="0" id="E200-MJMAIN-221E"
+                                                    d="M55 217Q55 305 111 373T254 442Q342 442 419 381Q457 350 493 303L507 284L514 294Q618 442 747 442Q833 442 888 374T944 214Q944 128 889 59T743 -11Q657 -11 580 50Q542 81 506 128L492 147L485 137Q381 -11 252 -11Q166 -11 111 57T55 217ZM907 217Q907 285 869 341T761 397Q740 397 720 392T682 378T648 359T619 335T594 310T574 285T559 263T548 246L543 238L574 198Q605 158 622 138T664 94T714 61T765 51Q827 51 867 100T907 217ZM92 214Q92 145 131 89T239 33Q357 33 456 193L425 233Q364 312 334 337Q285 380 233 380Q171 380 132 331T92 214Z">
+                                                </path>
+                                                <path stroke-width="0" id="E200-MJMAIN-28"
+                                                    d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z">
+                                                </path>
+                                                <path stroke-width="0" id="E200-MJMAIN-2B"
+                                                    d="M56 237T56 250T70 270H369V420L370 570Q380 583 389 583Q402 583 409 568V270H707Q722 262 722 250T707 230H409V-68Q401 -82 391 -82H389H387Q375 -82 369 -68V230H70Q56 237 56 250Z">
+                                                </path>
+                                                <path stroke-width="0" id="E200-MJMAIN-31"
+                                                    d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z">
+                                                </path>
+                                                <path stroke-width="0" id="E200-MJMAIN-29"
+                                                    d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z">
+                                                </path>
+                                                <path stroke-width="0" id="E200-MJMATHI-50"
+                                                    d="M287 628Q287 635 230 637Q206 637 199 638T192 648Q192 649 194 659Q200 679 203 681T397 683Q587 682 600 680Q664 669 707 631T751 530Q751 453 685 389Q616 321 507 303Q500 302 402 301H307L277 182Q247 66 247 59Q247 55 248 54T255 50T272 48T305 46H336Q342 37 342 35Q342 19 335 5Q330 0 319 0Q316 0 282 1T182 2Q120 2 87 2T51 1Q33 1 33 11Q33 13 36 25Q40 41 44 43T67 46Q94 46 127 49Q141 52 146 61Q149 65 218 339T287 628ZM645 554Q645 567 643 575T634 597T609 619T560 635Q553 636 480 637Q463 637 445 637T416 636T404 636Q391 635 386 627Q384 621 367 550T332 412T314 344Q314 342 395 342H407H430Q542 342 590 392Q617 419 631 471T645 554Z">
+                                                </path>
+                                                <path stroke-width="0" id="E200-MJMATHI-44"
+                                                    d="M287 628Q287 635 230 637Q207 637 200 638T193 647Q193 655 197 667T204 682Q206 683 403 683Q570 682 590 682T630 676Q702 659 752 597T803 431Q803 275 696 151T444 3L430 1L236 0H125H72Q48 0 41 2T33 11Q33 13 36 25Q40 41 44 43T67 46Q94 46 127 49Q141 52 146 61Q149 65 218 339T287 628ZM703 469Q703 507 692 537T666 584T629 613T590 629T555 636Q553 636 541 636T512 636T479 637H436Q392 637 386 627Q384 623 313 339T242 52Q242 48 253 48T330 47Q335 47 349 47T373 46Q499 46 581 128Q617 164 640 212T683 339T703 469Z">
+                                                </path>
+                                                <path stroke-width="0" id="E200-MJMAIN-2212"
+                                                    d="M84 237T84 250T98 270H679Q694 262 694 250T679 230H98Q84 237 84 250Z"></path>
+                                                <path stroke-width="0" id="E200-MJMATHI-70"
+                                                    d="M23 287Q24 290 25 295T30 317T40 348T55 381T75 411T101 433T134 442Q209 442 230 378L240 387Q302 442 358 442Q423 442 460 395T497 281Q497 173 421 82T249 -10Q227 -10 210 -4Q199 1 187 11T168 28L161 36Q160 35 139 -51T118 -138Q118 -144 126 -145T163 -148H188Q194 -155 194 -157T191 -175Q188 -187 185 -190T172 -194Q170 -194 161 -194T127 -193T65 -192Q-5 -192 -24 -194H-32Q-39 -187 -39 -183Q-37 -156 -26 -148H-6Q28 -147 33 -136Q36 -130 94 103T155 350Q156 355 156 364Q156 405 131 405Q109 405 94 377T71 316T59 280Q57 278 43 278H29Q23 284 23 287ZM178 102Q200 26 252 26Q282 26 310 49T356 107Q374 141 392 215T411 325V331Q411 405 350 405Q339 405 328 402T306 393T286 380T269 365T254 350T243 336T235 326L232 322Q232 321 229 308T218 264T204 212Q178 106 178 102Z">
+                                                </path>
+                                                <path stroke-width="0" id="E200-MJMAIN-33"
+                                                    d="M127 463Q100 463 85 480T69 524Q69 579 117 622T233 665Q268 665 277 664Q351 652 390 611T430 522Q430 470 396 421T302 350L299 348Q299 347 308 345T337 336T375 315Q457 262 457 175Q457 96 395 37T238 -22Q158 -22 100 21T42 130Q42 158 60 175T105 193Q133 193 151 175T169 130Q169 119 166 110T159 94T148 82T136 74T126 70T118 67L114 66Q165 21 238 21Q293 21 321 74Q338 107 338 175V195Q338 290 274 322Q259 328 213 329L171 330L168 332Q166 335 166 348Q166 366 174 366Q202 366 232 371Q266 376 294 413T322 525V533Q322 590 287 612Q265 626 240 626Q208 626 181 615T143 592T132 580H135Q138 579 143 578T153 573T165 566T175 555T183 540T186 520Q186 498 172 481T127 463Z">
+                                                </path>
+                                            </defs>
+                                            <g stroke="currentColor" fill="currentColor" stroke-width="0"
+                                                transform="matrix(1 0 0 -1 0 0)">
+                                                <use xlink:href="#E200-MJMATHI-54" x="0" y="0"></use>
+                                                <use xlink:href="#E200-MJMAIN-3D" x="981" y="0"></use>
+                                                <g transform="translate(2037,0)">
+                                                    <use xlink:href="#E200-MJSZ2-2211" x="0" y="0"></use>
+                                                    <g transform="translate(148,-1088)">
+                                                        <use transform="scale(0.707)" xlink:href="#E200-MJMATHI-69" x="0" y="0"></use>
+                                                        <use transform="scale(0.707)" xlink:href="#E200-MJMAIN-3D" x="345" y="0"></use>
+                                                        <use transform="scale(0.707)" xlink:href="#E200-MJMAIN-30" x="1123" y="0"></use>
+                                                    </g>
+                                                    <use transform="scale(0.707)" xlink:href="#E200-MJMAIN-221E" x="521" y="1626"></use>
+                                                </g>
+                                                <use xlink:href="#E200-MJMAIN-28" x="3481" y="0"></use>
+                                                <use xlink:href="#E200-MJMATHI-69" x="3870" y="0"></use>
+                                                <use xlink:href="#E200-MJMAIN-2B" x="4437" y="0"></use>
+                                                <use xlink:href="#E200-MJMAIN-31" x="5438" y="0"></use>
+                                                <use xlink:href="#E200-MJMAIN-29" x="5938" y="0"></use>
+                                                <g transform="translate(6327,0)">
+                                                    <use xlink:href="#E200-MJMATHI-50" x="0" y="0"></use>
+                                                    <use transform="scale(0.707)" xlink:href="#E200-MJMATHI-69" x="1108" y="498"></use>
+                                                    <use transform="scale(0.707)" xlink:href="#E200-MJMATHI-44" x="907" y="-451"></use>
+                                                </g>
+                                                <use xlink:href="#E200-MJMAIN-28" x="7654" y="0"></use>
+                                                <use xlink:href="#E200-MJMAIN-31" x="8043" y="0"></use>
+                                                <use xlink:href="#E200-MJMAIN-2212" x="8765" y="0"></use>
+                                                <g transform="translate(9765,0)">
+                                                    <use xlink:href="#E200-MJMATHI-50" x="0" y="0"></use>
+                                                    <use transform="scale(0.707)" xlink:href="#E200-MJMATHI-44" x="907" y="-213"></use>
+                                                </g>
+                                                <use xlink:href="#E200-MJMAIN-29" x="11093" y="0"></use>
+                                                <use xlink:href="#E200-MJMAIN-3D" x="11760" y="0"></use>
+                                                <g transform="translate(12538,0)">
+                                                    <g transform="translate(397,0)">
+                                                        <rect stroke="none" width="3169" height="60" x="0" y="220"></rect>
+                                                        <use xlink:href="#E200-MJMAIN-31" x="1334" y="676"></use>
+                                                        <g transform="translate(60,-686)">
+                                                            <use xlink:href="#E200-MJMAIN-31" x="0" y="0"></use>
+                                                            <use xlink:href="#E200-MJMAIN-2212" x="722" y="0"></use>
+                                                            <g transform="translate(1722,0)">
+                                                                <use xlink:href="#E200-MJMATHI-50" x="0" y="0"></use>
+                                                                <use transform="scale(0.707)" xlink:href="#E200-MJMATHI-44" x="907"
+                                                                    y="-213"></use>
+                                                            </g>
+                                                        </g>
+                                                    </g>
+                                                </g>
+                                                <use xlink:href="#E200-MJMAIN-3D" x="16503" y="0"></use>
+                                                <g transform="translate(17281,0)">
+                                                    <g transform="translate(397,0)">
+                                                        <rect stroke="none" width="1076" height="60" x="0" y="220"></rect>
+                                                        <g transform="translate(60,676)">
+                                                            <use xlink:href="#E200-MJMATHI-70" x="0" y="0"></use>
+                                                            <use transform="scale(0.707)" xlink:href="#E200-MJMAIN-30" x="711" y="-213">
+                                                            </use>
+                                                        </g>
+                                                        <g transform="translate(60,-686)">
+                                                            <use xlink:href="#E200-MJMATHI-70" x="0" y="0"></use>
+                                                            <use transform="scale(0.707)" xlink:href="#E200-MJMAIN-33" x="711" y="-213">
+                                                            </use>
+                                                        </g>
+                                                    </g>
+                                                </g>
+                                            </g>
+                                        </svg></span></div>
+                                <script type="math/tex; mode=display"
+                                    id="MathJax-Element-196">T=\sum_{i=0}^\infty(i+1)P_D^i(1-P_D)=\frac 1{1-P_D}=\frac{p_0}{p_3}</script>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- <div id="layout-content"> -->
+                <div id="footer-container">
+                    <div id="footer">
+                        <div id="footer-text">
+                            Last edited on 2020-08-13 by Xincheng Xie.
+                        </div> <!-- <div id="footer-text"> -->
+                    </div> <!-- <div id="footer"> -->
+                </div> <!-- <div id="footer-container"> -->
+            </div> <!-- <div id="layout-content-container"> -->
+        </div>
+        <!--- <div id="layout"> --->
+    </div>
+    <!--- <div id="main-container"> --->
+    <script>
+        function openNav() {
+            if (window.innerWidth <= 1200) {
+                document.getElementById("layout-menu").style.width = "280px";
+                document.getElementById("layout-content-container").style.marginLeft = "280.8px";
+                document.getElementById("layout-content-container").style.position = "fixed";
+            }
+        }
+        function closeNav() {
+            if (window.innerWidth <= 1200) {
+                document.getElementById("layout-menu").style.width = "0";
+                document.getElementById("layout-content-container").style.position = "static";
+                document.getElementById("layout-content-container").style.marginLeft = "0px";
+                setInterval(
+                    function () { location.reload() },
+                    500
+                );
+            }
+        }
+    </script>
+</body>
+
+</html>
